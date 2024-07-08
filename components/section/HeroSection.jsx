@@ -12,8 +12,8 @@ const HeroSection = () => {
       <span className="pointer-events-none whitespace-pre-wrap gradient1 bg-clip-text text-center text-7xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
       standard for chats
       </span>
-      <div className="relative m-auto flex flex-col items-center justify-center overflow-hidden rounded-[18px] p-4 w-full">
-      <Image src={'https://www.dimension.dev/build/q-3559dadb.png'} className="rounded-[18px] w-[90%]" width={800} height={500} />
+      <div className="relative m-auto flex flex-col items-center justify-center overflow-hidden rounded-[18px] p-4 w-[80%]">
+      <Image src={'/demo-desktop.png'} className="rounded-[18px] w-[100%] h-auto" width={800} height={500} unoptimized={true} />
       <BorderBeam size={250} duration={12} delay={9} />
     </div>
     </main>
