@@ -102,6 +102,14 @@ module.exports = {
           },
         },
         shimmer: {
+          from: {
+            "backgroundPosition": "0 0"
+          },
+          to: {
+            "backgroundPosition": "-200% 0"
+          }
+        },
+        shimmer1: {
           "0%, 90%, 100%": {
             "background-position": "calc(-100% - var(--shimmer-width)) 0",
           },
@@ -109,6 +117,7 @@ module.exports = {
             "background-position": "calc(100% + var(--shimmer-width)) 0",
           },
         },
+        
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -116,7 +125,8 @@ module.exports = {
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
         "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
         slide: "slide var(--speed) ease-in-out infinite alternate",
-        shimmer: "shimmer 8s infinite",
+       shimmer: "shimmer 2s linear infinite",
+      shimmer1: "shimmer1 8s infinite",
       },
     },
   },

@@ -2,13 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+:root{
+  --primary-color:#05051e;
+  --black-color1:#0001037c;
+}
+
+body {
   margin: 0;
   padding: 0;
-  background-color: rgb(5, 5, 30);
+  background-color: var(--primary-color);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   color: #e2e8ff;
   position: relative;
 }
+
+.customBorder1:before {
+  background: linear-gradient(264.15deg, rgba(226, 232, 255, .2) -.4%, rgba(226, 232, 255, 0) 100.4%), linear-gradient(0deg, rgba(226, 232, 255, .3), rgba(226, 232, 255, .1));
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+  position: absolute;
+}
+.customBorder2:before {
+  background: linear-gradient(135deg, #a578ff 0%, #ff83bd 33.33%, #ffba6d 66.67%, #fbe9be 100%);
+  border-radius: 9999px;
+  content: "";
+  inset: 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+  position: absolute;
+  opacity: 0.5;
+}
+
+.gradient1 {
+  background-image: linear-gradient(135deg, #a578ff 0%, #ff83bd 33.33%, #ffba6d 66.67%, #fbe9be 100%);
+}
+
+.customFadingEffect::after {
+  content: '';
+  background: linear-gradient(to top, #05051e 30%, transparent);
+  z-index: 50;
+  inset: 0;
+  position: absolute;
+  box-sizing: border-box;
+  border: 0 solid #e5e7eb;
+}
+
+.glassBtn{
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  }
+  .glassBtn1{
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  }
+  .glassBtn1:before,.glassBtn:before {
+      background: linear-gradient(264.15deg, rgba(226, 232, 255, .2) -.4%, rgba(226, 232, 255, 0) 100.4%), linear-gradient(0deg, rgba(226, 232, 255, .3), rgba(226, 232, 255, .1));
+      border-radius: inherit;
+      content: "";
+      inset: 0;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: xor;
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      padding: 1px;
+      pointer-events: none;
+      position: absolute;
+  }
