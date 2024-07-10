@@ -50,7 +50,7 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-        <div className="customFadingEffect top-[50%] lg:top-[55%] bg-[#05051e] flex flex-col items-center justify-center overflow-hidden rounded-[18px] p-4 w-[180%] lg:w-[70%] mt-0 md:mt-8 customBorder1 absolute z-[2] left-[50%] translate-x-[-20%] lg:translate-x-[-50%]">
+        <div className="customFadingEffect top-[55%] bg-[#05051e] flex flex-col items-center justify-center overflow-hidden rounded-[18px] p-4 w-[180%] lg:w-[70%] mt-0 md:mt-8 customBorder1 absolute z-[2] left-[50%] translate-x-[-20%] lg:translate-x-[-50%]">
           <Image src={'/demo-desktop.png'} className="rounded-[18px] w-[100%] h-auto" width={800} height={500} unoptimized={true} />
           <BorderBeam size={200} duration={12} delay={5} />
           <BorderBeam size={200} duration={12} delay={0} />
