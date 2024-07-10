@@ -6,6 +6,10 @@
   --primary-color:#05051e;
   --black-color1:#0001037c;
 }
+*{
+  -webkit-font-smoothing:antialiased;
+  text-rendering: optimizeLegibility;
+}
 
 body {
   margin: 0;
@@ -89,3 +93,70 @@ body {
       pointer-events: none;
       position: absolute;
   }
+  .customContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 850px;
+}
+.customCircle {
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #070722 0%, #05051e 50%);
+    box-sizing: border-box;
+    z-index: 2; /* place circle above the image */
+    position: relative;
+}
+.customCircle:before {
+  background: linear-gradient(264.15deg, rgba(226, 232, 255, .2) -.4%, rgba(226, 232, 255, 0) 100.4%), linear-gradient(0deg, rgba(226, 232, 255, 0), rgba(226, 232, 255, 0));
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  pointer-events: none;
+  position: absolute;
+}
+.customOrbit {
+    position: absolute;
+    width: 800px; 
+    height: 800px; 
+    top: 50%; 
+    left: 50%;
+    animation: customBackBeamRotate 8s linear infinite;
+    transform: translate(-50%,-50%);
+}
+.customOrbit1 {
+    position: absolute;
+    width: 800px; 
+    height: 800px; 
+    top: 50%; 
+    left: 50%;
+    animation: customBackBeamRotate 8s linear infinite;
+    animation-delay: 1s;
+    transform: translate(-50%,-50%);
+}
+.light-beam {
+    width: 200px; /* smaller image width */
+    height: 200px; /* smaller image height */
+    position: absolute;
+    top: 0%;
+    left: 18%;
+    /* transform: translateX(-50%); */
+}
+
+@keyframes customBackBeamRotate {
+    0% {
+        transform: translate(-50%,-50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%,-50%) rotate(360deg);
+    }
+}
