@@ -26,8 +26,8 @@ export const projects = [
 ];
 const Section1 = () => {
   return (
-    <div className='h-[100vh] section1 px-[14rem] pt-[19rem] flex flex-col'>
-      <div className='flex gap-2'>
+    <div className='h-[100vh] section1 px-[3rem] md:px-[10rem] xl:px-[14rem] pt-[7rem] md:pt-[12rem] lg:pt-[17rem] xl:pt-[19rem] flex flex-col'>
+      <div className='flex gap-2 flex-col lg:flex-row'>
       <span className="pointer-events-none whitespace-pre-wrap text-center text-4xl font-semibold leading-none dark:from-white dark:to-slate-900/10">
       Why Should You
       </span>
@@ -36,7 +36,7 @@ const Section1 = () => {
       </span>
       </div>
       <span className="opacity-70 mt-3">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia inventore eligendi perspiciatis architecto, molestiae optio. Nihil debitis praesentium amet corporis placeat
+      Nexus offers real-time translation for effortless global communication. Connect seamlessly in any language with an intuitive, distraction-free interface. Enjoy smooth conversations and easy media sharing.
       </span>
       <div className=" mt-4">
       <HoverEffect items={projects} />
