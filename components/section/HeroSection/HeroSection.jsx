@@ -22,10 +22,10 @@ const HeroSection = () => {
         </div>
       </div>
       <span className="pointer-events-none whitespace-pre-wrap text-center max-w-[90vw] text-4xl md:text-5xl lg:text-7xl font-semibold leading-none dark:from-white dark:to-slate-900/10">
-        Dimension is the new
+      Nexus is the new
       </span>
       <span className="pointer-events-none whitespace-pre-wrap gradient1 bg-clip-text text-center max-w-[90vw] text-4xl md:text-5xl lg:text-7xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
-        standard for chats
+        way of chats
       </span>
       <span className='mt-1 text-lg md:text-xl opacity-70 '>Chat in any language you want</span>
       <ShimmerButton className="shadow-2xl mt-4">

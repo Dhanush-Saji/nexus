@@ -160,3 +160,7 @@ body {
         transform: translate(-50%,-50%) rotate(360deg);
     }
 }
+.section1{
+  background-image: url('/bg1.png');
+  background-size: cover;
+}
