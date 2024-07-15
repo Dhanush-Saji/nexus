@@ -51,7 +51,7 @@ export const HoverEffect = ({
             )}
           </AnimatePresence>
           <Card>
-            <Image src={item.image} width={200} height={200} className="mx-auto" />
+            <Image alt="card-image" src={item.image} width={200} height={200} className="mx-auto" />
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
           </Card>

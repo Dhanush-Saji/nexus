@@ -27,8 +27,9 @@ body {
   background-color: rgba(255, 255, 255, 0.349);
   border-radius: 50%;
   position: fixed;
-  transform: translate(-50%,-50%) scale(0.6);
+  transform: translate(-50%,-50%) scale(0.5);
   z-index: 999999;
+  pointer-events: none;
 }
 
 .customBorder1:before {
@@ -169,12 +170,12 @@ body {
         transform: translate(-50%,-50%) rotate(360deg);
     }
 }
-.section1{
+.FeatureSection{
   background-image: url('/bg1.png');
   background-size: cover;
 }
 @media (max-width: 768px) {
-  .section1{
+  .FeatureSection{
     background-image: none;
   }
 }

@@ -1,6 +1,6 @@
 import CursorAnimation from "@/components/cursorAnimation/CursorAnimation";
 import HeroSection from "@/components/section/HeroSection/HeroSection";
-import Section1 from "@/components/section/Section1/Section1";
+import FeatureSection from "@/components/section/FeatureSection/FeatureSection";
 
 export default function Home() {
   
@@ -8,7 +8,7 @@ export default function Home() {
     <>
      <CursorAnimation />
     <HeroSection />
-    <Section1 />
+    <FeatureSection />
     </>
   );
 }

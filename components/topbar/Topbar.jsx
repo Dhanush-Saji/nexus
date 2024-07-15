@@ -7,7 +7,7 @@ const Topbar = () => {
     return (
         <header className='fixed items-center flex w-full px-6 py-4 bg-[rgba(255,255,255,0.03)] backdrop-blur-[8px] z-[99999]'>
             <div className='flex gap-4 items-center'>
-                <Image src={'/logo.png'} width={40} height={40} objectFit='contain' />
+                <Image alt='logo' src={'/logo.png'} width={40} height={40} objectFit='contain' />
                 <span className='text-center text-2xl font-semibold leading-none'>Nexus</span>
             </div>
             {/* <div className='z-[4] absolute'> */}

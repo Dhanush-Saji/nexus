@@ -25,11 +25,11 @@ export const projects = [
     image:'https://i.imgur.com/9axXTja.png'
   },
 ];
-const Section1 = () => {
+const FeatureSection = () => {
   return (
-    <div className='h-[100vh] section1 px-[3rem] md:px-[10rem] xl:px-[15rem] pt-[7rem] md:pt-[12rem] lg:pt-[17rem] xl:pt-[22rem] flex flex-col'>
+    <div className='h-[100vh] FeatureSection px-[3rem] md:px-[10rem] xl:px-[15rem] pt-[7rem] md:pt-[12rem] lg:pt-[17rem] xl:pt-[22rem] flex flex-col'>
       <TextRevealDirectionOpacityOnView delay={'0'} direction='bt'>
-      <div className='flex gap-2 flex-col lg:flex-row'>
+      <div className='cursorAnimationOnHover flex gap-2 flex-col lg:flex-row'>
       <span className="pointer-events-none whitespace-pre-wrap text-center text-4xl font-semibold leading-none dark:from-white dark:to-slate-900/10">
       Why Should You
       </span>
@@ -37,7 +37,7 @@ const Section1 = () => {
         Use Nexus?
       </span>
       </div>
-      <span className="opacity-70 mt-3">
+      <span className=" opacity-70 mt-3">
       Nexus offers real-time translation for effortless global communication. Connect seamlessly in any language with an intuitive, distraction-free interface. Enjoy smooth conversations and easy media sharing.
       </span>
       </TextRevealDirectionOpacityOnView>
@@ -48,4 +48,4 @@ const Section1 = () => {
   )
 }
 
-export default Section1
+export default FeatureSection
