@@ -1,8 +1,8 @@
 "use client"
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion} from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import {useState } from "react";
 import ShimmerButton1 from "../magicui/shimmer-button1";
 import Image from "next/image";
 
@@ -11,7 +11,6 @@ export const HoverEffect = ({
   className,
 }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
-
   return (
     <div
       className={cn(
@@ -20,11 +19,19 @@ export const HoverEffect = ({
       )}
     >
       {items.map((item, idx) => (
-        <div
-          key={item?.link}
+        <motion.div
+          key={idx}
           className="relative group  block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            delay: 0.5 * idx,
+            duration: 0.6,
+            ease: "easeInOut",
+          }}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
@@ -48,7 +55,7 @@ export const HoverEffect = ({
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
           </Card>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
@@ -60,21 +67,21 @@ export const Card = ({
 }) => {
   return (
     <ShimmerButton1 >
-    <div
-      className={cn(
-        "rounded-2xl h-full w-full p-0 py-4 overflow-hidden bg-gradient-to-b from-[#05051e] to-transparent border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
-        className
-      )}
-    >
-      <div className="relative z-50 h-full">
-      <div className="z-10 flex items-center justify-center h-full">
-        <span className="h-full whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-        <div className="h-full items-center p-2 flex flex-col">{children}</div>
-        </span>
-    </div>
+      <div
+        className={cn(
+          "rounded-2xl h-full w-full p-0 py-4 overflow-hidden bg-gradient-to-b from-[#05051e] to-transparent border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+          className
+        )}
+      >
+        <div className="relative z-50 h-full">
+          <div className="z-10 flex items-center justify-center h-full">
+            <span className="h-full whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
+              <div className="h-full items-center p-2 flex flex-col">{children}</div>
+            </span>
+          </div>
+        </div>
       </div>
-    </div>
-      </ShimmerButton1>
+    </ShimmerButton1>
   );
 };
 export const CardTitle = ({

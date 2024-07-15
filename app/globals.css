@@ -21,6 +21,15 @@ body {
   color: #e2e8ff;
   position: relative;
 }
+#cursor{
+  height: 150px;
+  width: 150px;
+  background-color: rgba(255, 255, 255, 0.349);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%,-50%) scale(0.6);
+  z-index: 999999;
+}
 
 .customBorder1:before {
   background: linear-gradient(264.15deg, rgba(226, 232, 255, .2) -.4%, rgba(226, 232, 255, 0) 100.4%), linear-gradient(0deg, rgba(226, 232, 255, .3), rgba(226, 232, 255, .1));
