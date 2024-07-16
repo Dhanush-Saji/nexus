@@ -67,7 +67,7 @@ const CursorAnimation = () => {
     }
   }, [])
   return (
-    <div id="cursor"></div>
+    <div id="cursor" className='hidden sm:block'></div>
   )
 }
 
