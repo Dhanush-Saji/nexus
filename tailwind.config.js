@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-
 const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
@@ -122,7 +121,6 @@ module.exports = {
             "background-position": "calc(100% + var(--shimmer-width)) 0",
           },
         },
-        
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -140,7 +138,6 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate"),addVariablesForColors],
 }
-
 function addVariablesForColors({ addBase, theme }) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(

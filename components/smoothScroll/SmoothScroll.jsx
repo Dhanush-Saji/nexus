@@ -1,20 +1,22 @@
 "use client"
 import Lenis from "@studio-freight/lenis";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 
-const SmoothScroll = ({ children }) => {
+const SmoothScroll = () => {
+  const lenisRef = useRef(null);
   useEffect(() => {
-    const lenis = new Lenis({
+    lenisRef.current = new Lenis({
       smoothWheel: true,
-      duration: 2,
+      duration: 3,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 
     function raf(time) {
-      lenis.raf(time);
+      lenisRef.current?.raf(time);
       requestAnimationFrame(raf);
     }
+
     requestAnimationFrame(raf);
     return () => {
       lenisRef.current?.destroy();
@@ -22,7 +24,6 @@ const SmoothScroll = ({ children }) => {
   }, []);
   return (
     <>
-      {children}
     </>
   )
 }

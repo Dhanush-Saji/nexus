@@ -3,6 +3,7 @@ import "./globals.css";
 import Topbar from "@/components/topbar/Topbar";
 import ParticleBg from "@/components/particleBg/ParticleBg";
 import SmoothScroll from "@/components/smoothScroll/SmoothScroll";
+import ToastContext from "@/context/ToastContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const onest = Onest({ subsets: ["latin"] });
@@ -16,12 +17,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.className} ${onest.className}`}>
-        <SmoothScroll>
+        <ToastContext>
+        <SmoothScroll />
         <ParticleBg>
         <Topbar />
         {children}
         </ParticleBg>
-        </SmoothScroll>
+        </ToastContext>
         </body>
     </html>
   );

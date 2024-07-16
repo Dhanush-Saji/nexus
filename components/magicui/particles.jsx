@@ -1,4 +1,5 @@
 "use client";;
+import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 
 function MousePosition() {
@@ -45,7 +46,7 @@ const Particles = ({
   staticity = 50,
   ease = 50,
   size = 0.4,
-  refresh = false,
+  refresh = true,
   color = "#ffffff",
   vx = 0,
   vy = 0,
@@ -58,7 +59,7 @@ const Particles = ({
   const mouse = useRef({ x: 0, y: 0 });
   const canvasSize = useRef({ w: 0, h: 0 });
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
-
+const path = usePathname()
   useEffect(() => {
     if (canvasRef.current) {
       context.current = canvasRef.current.getContext("2d");
@@ -78,7 +79,7 @@ const Particles = ({
 
   useEffect(() => {
     initCanvas();
-  }, [refresh]);
+  }, [path]);
 
   const initCanvas = () => {
     resizeCanvas();
