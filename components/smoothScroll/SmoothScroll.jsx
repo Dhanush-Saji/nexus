@@ -1,5 +1,6 @@
 "use client";
 import Lenis from "@studio-freight/lenis";
+import { useEffect } from "react";
 
 export const lenis = new Lenis({
     smoothWheel: true,
@@ -15,6 +16,9 @@ export const lenis = new Lenis({
   requestAnimationFrame(raf);
 
 const SmoothScroll = ( {children}) => {
+  useEffect(() => {
+    requestAnimationFrame(raf);
+  }, []);
   return (
     <>
       {children}
