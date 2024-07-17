@@ -35,7 +35,7 @@ const Page = () => {
       await setDoc(doc(firestore, "users", user.uid), {
         name: formData.fullname,
         email: formData.email,
-        avatarUrl: avatarUrl
+        image: avatarUrl
       });
       setformData(initialForm)
       router.push('/')

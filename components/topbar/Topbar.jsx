@@ -3,6 +3,7 @@ import React from 'react'
 import './Topbar.css'
 import { MessageSquareText } from 'lucide-react'
 import Link from 'next/link'
+import SignoutBtn from '../signoutBtn/SignoutBtn'
 
 const Topbar = () => {
     return (
@@ -16,6 +17,7 @@ const Topbar = () => {
             {/* <div className='z-[4] absolute'> */}
             {/* <ShinyButton text="Shiny Button" /> */}
             <MessageSquareText className='ml-auto mr-4 text-[#e2e8ff]' />
+            <SignoutBtn />
         <Link href={'/login'}>
         <button className="glassBtn1 inline-flex h-12 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,var(--black-color1),45%,#1e2631,55%,var(--black-color1))] bg-[length:200%_100%] px-6 font-medium text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
           Login

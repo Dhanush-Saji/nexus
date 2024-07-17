@@ -8,8 +8,11 @@ import { BorderBeam } from '@/components/magicui/border-beam'
 import TextRevealDirectionOpacity from '@/components/animation/TextRevealDirectionOpacity'
 import TextRevealOpacity from '@/components/animation/TextRevealOpacity'
 import Link from 'next/link'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 
-const HeroSection = () => {
+const HeroSection = async() => {
+  const session = await getServerSession(authOptions)
   return (
     <main className="flex items-center w-full flex-col relative h-[100vh] overflow-hidden">
       <div className='flex flex-col gap-2 absolute z-[3] left-[50%] top-[15%]  translate-x-[-50%] items-center w-full'>

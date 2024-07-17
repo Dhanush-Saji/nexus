@@ -9,11 +9,11 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify'
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import Link from "next/link";
 import { generateFirebaseAuthErrorMessage } from "@/lib/firebaseErrorHandler";
 import Image from "next/image";
+import { signIn } from "next-auth/react";
 
 const Page = () => {
   const [isLoading, setisLoading] = useState(false)
@@ -28,7 +28,7 @@ const Page = () => {
     }
     try {
       setisLoading(true)
-      const userCredential = await signInWithEmailAndPassword(auth, formData?.email, formData?.password)
+      const userCredential = await signIn('credentials',{email:formData?.email,password:formData?.password})
       const user = userCredential.user
       if (user) {
         setformData(initialForm)
@@ -92,7 +92,7 @@ const Page = () => {
           <div className="bg-gradient-to-r from-transparent via-neutral-500 to-transparent h-[1px] w-full mt-4" />
 
           <div className="flex flex-col space-y-4 mt-4">
-            <button
+            <button onClick={()=>signIn('google')}
               className=" relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-[8px] h-10 font-medium shadow-input bg-zinc-900 shadow-[0px_0px_1px_1px_var(--neutral-800)]"
             >
               <IconBrandGoogle className="h-4 w-4 text-neutral-300" />

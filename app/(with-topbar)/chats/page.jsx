@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import './chats.css'
 import ChatRightSection from '@/components/section/ChatRightSection/ChatRightSection'
+import { useSession } from 'next-auth/react'
 
 const Page = () => {
   const router = useRouter()
@@ -21,17 +22,18 @@ const unsubscribe = onAuthStateChanged(auth,async(user)=>{
     const userRef = doc(firestore,'users',user.uid)
     const userSnap = await getDoc(userRef)
     const userData = userSnap.data()
+    console.log('dhanu',user)
     setuser(userData)
-  }else{
-    setuser(null)
-    router.push('/login')
   }
+  // else{
+  //   setuser(null)
+  //   router.push('/login')
+  // }
 })
 return () => unsubscribe()
   },[auth,router])
-  console.log(user)
   return (
-    <main className="flex items-center w-full flex-col relative h-[100vh] overflow-hidden px-6">
+    <main className="flex items-center w-full flex-col relative h-[100vh] px-6">
       <div className="chatGrid mt-24 w-full bg-[#111827] rounded-[10px] border border-gray-50/10 h-[85vh]">
         <div className="left-part  border-r border-gray-50/10">
           <div className="flex gap-4 items-center p-3 border-b border-gray-50/10">
