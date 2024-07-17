@@ -1,6 +1,5 @@
 import { Inter,Onest } from "next/font/google";
 import "./globals.css";
-import Topbar from "@/components/topbar/Topbar";
 import ParticleBg from "@/components/particleBg/ParticleBg";
 import SmoothScroll from "@/components/smoothScroll/SmoothScroll";
 import ToastContext from "@/context/ToastContext";
@@ -20,7 +19,6 @@ export default function RootLayout({ children }) {
         <ToastContext>
         <SmoothScroll />
         <ParticleBg>
-        <Topbar />
         {children}
         </ParticleBg>
         </ToastContext>

@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const Topbar = () => {
     return (
-        <header className='fixed items-center flex w-full px-6 py-4 bg-[rgba(255,255,255,0.03)] backdrop-blur-[8px] z-[99999]'>
+        <header className='fixed items-center flex w-full px-6 h-[5rem] bg-[rgba(255,255,255,0.03)] backdrop-blur-[8px] z-[99999]'>
             <Link href={'/'}>
             <div className='flex gap-4 items-center'>
                 <Image alt='logo' src={'/logo.png'} width={40} height={40} objectFit='contain' />

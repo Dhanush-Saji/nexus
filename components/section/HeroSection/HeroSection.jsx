@@ -36,7 +36,7 @@ const HeroSection = () => {
         </TextRevealDirectionOpacity>
         <TextRevealDirectionOpacity delay={0.6} direction='tb'>
           <span className='mt-1 text-lg md:text-xl opacity-70 '>Chat in any language you want</span>
-            <Link href={'/chat'}>
+            <Link href={'/chats'}>
           <ShimmerButton className="shadow-2xl mt-4 w-fit mx-auto">
             <span className="whitespace-pre-wrap text-center text-sm p-2 lg:p-0 rounded-full font-medium leading-none tracking-tight text-white lg:text-lg w-fit mx-auto">
               Chat Now
