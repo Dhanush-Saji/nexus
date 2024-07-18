@@ -52,6 +52,11 @@ const CursorAnimation = () => {
       el.addEventListener('mouseenter', handleMouseInvisibleEnter)
       el.addEventListener('mouseleave', handleMouseInvisibleLeave)
     })
+    const hoverElements2 = document.querySelectorAll('.topbar')
+    hoverElements2.forEach((el) => {
+      el.addEventListener('mouseenter', handleMouseInvisibleEnter)
+      el.addEventListener('mouseleave', handleMouseInvisibleLeave)
+    })
 
     // Clean up the event listeners on component unmount
     return () => {
@@ -61,6 +66,10 @@ const CursorAnimation = () => {
         el.removeEventListener('mouseleave', handleMouseMagnifyingLeave)
       })
       hoverElements1.forEach((el) => {
+        el.removeEventListener('mouseenter', handleMouseInvisibleEnter)
+        el.removeEventListener('mouseleave', handleMouseInvisibleLeave)
+      })
+      hoverElements2.forEach((el) => {
         el.removeEventListener('mouseenter', handleMouseInvisibleEnter)
         el.removeEventListener('mouseleave', handleMouseInvisibleLeave)
       })

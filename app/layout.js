@@ -4,6 +4,8 @@ import ParticleBg from "@/components/particleBg/ParticleBg";
 import SmoothScroll from "@/components/smoothScroll/SmoothScroll";
 import ToastContext from "@/context/ToastContext";
 import AuthProvider from "@/context/AuthProvider";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 const inter = Inter({ subsets: ["latin"] });
 const onest = Onest({ subsets: ["latin"] });
@@ -14,16 +16,17 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
+  const session = getServerSession(authOptions)
   return (
     <html lang="en">
       <body className={`${inter.className} ${onest.className}`}>
+        <AuthProvider>
         <ToastContext>
         <ParticleBg>
-        <AuthProvider>
         {children}
-        </AuthProvider>
         </ParticleBg>
         </ToastContext>
+        </AuthProvider>
         </body>
     </html>
   );

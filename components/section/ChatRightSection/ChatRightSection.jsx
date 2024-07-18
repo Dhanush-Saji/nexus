@@ -26,7 +26,7 @@ const ChatRightSection = ({user}) => {
             </button>
           </div>
           </div>
-          <div className="chatting-portion h-[66vh] bg-gradient-to-b from-[#131a29] to-[#0b1019] overflow-scroll px-4 flex flex-col">
+          <div className="chatting-portion h-[66vh] bg-gradient-to-b from-[#131a29] to-[#0b1019] overflow-y-scroll px-4 flex flex-col">
             <MessageCard />
             <MessageCard />
             <MessageCard />

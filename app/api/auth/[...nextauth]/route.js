@@ -3,42 +3,57 @@ import NextAuth from "next-auth"
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/lib/firebase";
-import { FirestoreAdapter } from "@auth/firebase-adapter";
+import { FirestoreAdapter, initFirestore } from "@auth/firebase-adapter";
 import { cert } from "firebase-admin/app";
+import admin from 'firebase-admin'
+import { adminAuth, adminDb } from "@/firebase/firebase";
 
 export const authOptions = {
   // Configure one or more authentication providers
   providers: [
-    CredentialsProvider({
-        name:"credentials",
-        credentials:{},
-        async authorize(credentials) {
-            return await signInWithEmailAndPassword(auth,credentials.email,credentials.password)
-            .then(userCredential =>{
-                if(userCredential.user){
-                    return userCredential.user
-                }
-                return null
-            })
-            .catch(error =>console.log(error))
-          },
-    }),
+    // CredentialsProvider({
+    //     name:"credentials",
+    //     async authorize(credentials) {
+    //       return await signInWithEmailAndPassword(auth,credentials.email,credentials.password)
+    //       .then(userCredential =>{
+    //         if (userCredential.user) {
+    //           return { id: userCredential.user.uid, email: userCredential.user.email };
+    //         }
+    //           return null
+    //       })
+    //       .catch(error =>console.log(error))
+    //     },
+    // }),
     GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       })
-  ],pages: {
-    signIn: '/login'
+  ],
+  session: {
+    strategy: "jwt",
   },
-  strategy: "jwt",
-  adapter: FirestoreAdapter({
-    credential: cert({
-      projectId: process.env.AUTH_FIREBASE_PROJECT_ID,
-      clientEmail: process.env.AUTH_FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.AUTH_FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-    }),
-  }),
+  adapter: FirestoreAdapter(adminDb),
+  callbacks: {
+    session: async ({ session, token }) => {
+      if (session?.user) {
+        if (token.sub) {
+          session.user.id = token.sub;
+          const firebaseToken = await adminAuth.createCustomToken(token.sub);
+          session.firebaseToken = firebaseToken;
+        }
+      }
+      return session;
+    },
+    jwt: async ({ user, token }) => {
+      if (user) {
+        token.sub = user.id;
+      }
+      return token;
+    },
+  },
 }
 
 const handler = NextAuth(authOptions)
+
+
 export { handler as GET, handler as POST };

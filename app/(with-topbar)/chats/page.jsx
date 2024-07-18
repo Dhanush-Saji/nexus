@@ -13,25 +13,30 @@ import ChatRightSection from '@/components/section/ChatRightSection/ChatRightSec
 import { useSession } from 'next-auth/react'
 
 const Page = () => {
+  const {data,status} = useSession();
   const router = useRouter()
   const [user, setuser] = useState(null)
   const auth = getAuth(app)
   useEffect(()=>{
-const unsubscribe = onAuthStateChanged(auth,async(user)=>{
-  if(user){
-    const userRef = doc(firestore,'users',user.uid)
-    const userSnap = await getDoc(userRef)
-    const userData = userSnap.data()
-    console.log('dhanu',user)
-    setuser(userData)
-  }
-  // else{
-  //   setuser(null)
-  //   router.push('/login')
-  // }
-})
-return () => unsubscribe()
-  },[auth,router])
+    if(status == 'unauthenticated'){
+      router.push('/login')
+    }
+  },[data])
+//   useEffect(()=>{
+// const unsubscribe = onAuthStateChanged(auth,async(user)=>{
+//   if(user){
+//     const userRef = doc(firestore,'users',user.uid)
+//     const userSnap = await getDoc(userRef)
+//     const userData = userSnap.data()
+//     setuser(userData)
+//   }
+//   else{
+//     setuser(null)
+//     router.push('/login')
+//   }
+// })
+// return () => unsubscribe()
+//   },[auth,router])
   return (
     <main className="flex items-center w-full flex-col relative h-[100vh] px-6">
       <div className="chatGrid mt-24 w-full bg-[#111827] rounded-[10px] border border-gray-50/10 h-[85vh]">
