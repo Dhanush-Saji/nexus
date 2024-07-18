@@ -17,7 +17,7 @@ const UserTopbarCard = () => {
                             <Image src={data?.user?.image} width={40} height={40} alt='user' className='rounded-full'  />
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className='bg-[#182137] mr-4 min-w-[200px] rounded-[5px]'>
-                            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                            <DropdownMenuLabel>{data?.user?.name}</DropdownMenuLabel>
                             <DropdownMenuSeparator className='bg-neutral-500' />
                             <DropdownMenuItem className='cursor-pointer hover:bg-[#1c263e]'>Profile</DropdownMenuItem>
                             <DropdownMenuItem onClick={()=>signOut()} className='cursor-pointer hover:bg-[#1c263e]'>Sign Out</DropdownMenuItem>

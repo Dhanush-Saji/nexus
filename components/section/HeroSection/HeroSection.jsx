@@ -8,11 +8,10 @@ import { BorderBeam } from '@/components/magicui/border-beam'
 import TextRevealDirectionOpacity from '@/components/animation/TextRevealDirectionOpacity'
 import TextRevealOpacity from '@/components/animation/TextRevealOpacity'
 import Link from 'next/link'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
+import ChatNowBtn from '@/components/btn/ChatNowBtn'
 
-const HeroSection = async() => {
-  const session = await getServerSession(authOptions)
+const HeroSection = () => {
+  
   return (
     <main className="flex items-center w-full flex-col relative h-[100vh] overflow-hidden">
       <div className='flex flex-col gap-2 absolute z-[3] left-[50%] top-[15%]  translate-x-[-50%] items-center w-full'>
@@ -39,13 +38,9 @@ const HeroSection = async() => {
         </TextRevealDirectionOpacity>
         <TextRevealDirectionOpacity delay={0.6} direction='tb'>
           <span className='mt-1 text-lg md:text-xl opacity-70 '>Chat in any language you want</span>
-            <Link href={'/chats'}>
           <ShimmerButton className="shadow-2xl mt-4 w-fit mx-auto">
-            <span className="whitespace-pre-wrap text-center text-sm p-2 lg:p-0 rounded-full font-medium leading-none tracking-tight text-white lg:text-lg w-fit mx-auto">
-              Chat Now
-            </span>
+            <ChatNowBtn />
           </ShimmerButton>
-            </Link>
         </TextRevealDirectionOpacity>
       </div>
       <div className="absolute z-0 left-[50%] top-[18%] translate-x-[-50%] w-full hidden lg:block">

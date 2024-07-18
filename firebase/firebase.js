@@ -7,17 +7,19 @@ if (!admin.app.length) {
   app = admin.initializeApp({
     credential: admin.credential.cert({
       projectId: process.env.AUTH_FIREBASE_PROJECT_ID,
-      clientEmail: process.env.AUTH_FIREBASE_PROJECT_ID,
+      clientEmail: process.env.AUTH_FIREBASE_CLIENT_EMAIL,
       privateKey: process.env.AUTH_FIREBASE_PRIVATE_KEY,
     }),
   });
 }
-export const adminDb = initFirestore({
+const adminDb = initFirestore({
   credential: admin.credential.cert({
     projectId: process.env.AUTH_FIREBASE_PROJECT_ID,
-    clientEmail: process.env.AUTH_FIREBASE_PROJECT_ID,
+    clientEmail: process.env.AUTH_FIREBASE_CLIENT_EMAIL,
     privateKey: process.env.AUTH_FIREBASE_PRIVATE_KEY,
   }),
 });
 
-export const adminAuth = admin.auth(app);
+const adminAuth = admin.auth(app);
+
+export { adminDb, adminAuth };

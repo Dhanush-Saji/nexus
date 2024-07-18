@@ -1,4 +1,4 @@
-import { Inter,Onest } from "next/font/google";
+import { Inter, Onest } from "next/font/google";
 import "./globals.css";
 import ParticleBg from "@/components/particleBg/ParticleBg";
 import SmoothScroll from "@/components/smoothScroll/SmoothScroll";
@@ -6,6 +6,7 @@ import ToastContext from "@/context/ToastContext";
 import AuthProvider from "@/context/AuthProvider";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
+import FirebaseAuthProvider from "@/context/FirebaseAuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const onest = Onest({ subsets: ["latin"] });
@@ -16,18 +17,18 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = getServerSession(authOptions)
+  const session = getServerSession(authOptions);
   return (
-    <html lang="en">
-      <body className={`${inter.className} ${onest.className}`}>
-        <AuthProvider>
-        <ToastContext>
-        <ParticleBg>
-        {children}
-        </ParticleBg>
-        </ToastContext>
-        </AuthProvider>
+    <AuthProvider>
+      <html lang="en">
+        <body className={`${inter.className} ${onest.className}`}>
+          <FirebaseAuthProvider>
+            <ToastContext>
+              <ParticleBg>{children}</ParticleBg>
+            </ToastContext>
+          </FirebaseAuthProvider>
         </body>
-    </html>
+      </html>
+    </AuthProvider>
   );
 }

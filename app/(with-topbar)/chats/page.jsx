@@ -1,8 +1,6 @@
 'use client'
 import Badge1 from '@/components/badges/Badge1'
 import UserList from '@/components/userList/UserList'
-import { app, firestore } from '@/lib/firebase'
-import { IconPhone } from '@tabler/icons-react'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { doc, getDoc } from 'firebase/firestore'
 import Image from 'next/image'
@@ -16,10 +14,9 @@ const Page = () => {
   const {data,status} = useSession();
   const router = useRouter()
   const [user, setuser] = useState(null)
-  const auth = getAuth(app)
   useEffect(()=>{
     if(status == 'unauthenticated'){
-      router.push('/login')
+      router.push('/')
     }
   },[data])
 //   useEffect(()=>{

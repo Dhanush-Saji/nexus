@@ -9,7 +9,6 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { toast } from 'react-toastify'
-import { auth } from "@/lib/firebase";
 import Link from "next/link";
 import { generateFirebaseAuthErrorMessage } from "@/lib/firebaseErrorHandler";
 import Image from "next/image";

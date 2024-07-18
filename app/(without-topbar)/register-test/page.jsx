@@ -12,7 +12,7 @@ import { AvatarGenerator } from "random-avatar-generator";
 import Image from "next/image";
 import { toast } from 'react-toastify'
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, firestore } from "@/lib/firebase";
+import { auth, firestore } from "@/lib/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import Link from "next/link";
 
