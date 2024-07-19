@@ -1,14 +1,14 @@
 import { IconPhone, IconSend2, IconUserPlus, IconVideo } from '@tabler/icons-react'
 import React from 'react'
 import MessageCard from '../MessageCard/MessageCard'
+import Image from 'next/image'
 
 const ChatRightSection = ({user}) => {
-  console.log(user)
   return (
     <div className="right-part h-full flex flex-col">
           <div className="chat-header flex justify-between p-3 border-b border-gray-50/10">
           <div className="flex gap-4 items-center">
-            <img src={user?.image} width={50} height={50} alt='user' />
+          <Image src={user?.image} width={40} height={40} alt='user' className='rounded-full'  />
             <div className="flex flex-col">
               <h3 className=' font-[700] text-[0.9rem]'>{user?.name}</h3>
               <h3 className=' opacity-50 font-[500] text-[0.8rem]'>{user?.email}</h3>
@@ -18,15 +18,15 @@ const ChatRightSection = ({user}) => {
             <button className='rounded-full border p-1 transition-all hover:bg-white hover:text-neutral-900'>
             <IconPhone className=' scale-[0.8]' />
             </button>
-            <button className='rounded-full border p-1'>
+            <button className='rounded-full border p-1 transition-all hover:bg-white hover:text-neutral-900'>
             <IconVideo className=' scale-[0.8]' />
             </button>
-            <button className='rounded-full border p-1'>
+            <button className='rounded-full border p-1 transition-all hover:bg-white hover:text-neutral-900'>
             <IconUserPlus className=' scale-[0.8]' />
             </button>
           </div>
           </div>
-          <div className="chatting-portion h-[66vh] bg-gradient-to-b from-[#131a29] to-[#0b1019] overflow-y-scroll px-4 flex flex-col">
+          <div className="chatting-portion bg-gradient-to-b from-[#131a29] to-[#0b1019] h-[69vh] overflow-y-scroll px-4 flex flex-col">
             <MessageCard />
             <MessageCard />
             <MessageCard />

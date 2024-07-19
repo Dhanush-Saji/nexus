@@ -12,7 +12,7 @@ import { AvatarGenerator } from "random-avatar-generator";
 import Image from "next/image";
 import { toast } from 'react-toastify'
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, firestore } from "@/lib/firebaseConfig";
+import { auth, firestoreDb } from "@/lib/firebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import Link from "next/link";
 
@@ -32,7 +32,7 @@ const Page = () => {
       setisLoading(true)
       const userCredential = await createUserWithEmailAndPassword(auth, formData?.email, formData?.password)
       const user = userCredential.user
-      await setDoc(doc(firestore, "users", user.uid), {
+      await setDoc(doc(firestoreDb, "users", user.uid), {
         name: formData.fullname,
         email: formData.email,
         image: avatarUrl

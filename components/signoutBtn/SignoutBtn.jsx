@@ -4,7 +4,6 @@ import React from 'react'
 
 const SignoutBtn = () => {
   const session = useSession();
-  console.log('SESSION',session)
   return (
     <button onClick={()=>signOut()}>Logout</button>
   )

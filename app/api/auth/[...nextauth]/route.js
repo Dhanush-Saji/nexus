@@ -28,7 +28,7 @@ export const authOptions = {
       if (session?.user) {
         if (token.sub) {
           session.user.id = token.sub;
-          // This helps to create to put entry in firebase database
+          // This helps to create for firebase authentication
           const firebaseToken = await adminAuth.createCustomToken(token.sub);
           session.firebaseToken = firebaseToken;
         }

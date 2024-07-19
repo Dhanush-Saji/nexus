@@ -7,13 +7,12 @@ import Image from 'next/image'
 
 const UserTopbarCard = () => {
     const { data,status } = useSession()
-    console.log(data)
     return (
         <>
             {
                 status == 'authenticated' ? <>
                     <DropdownMenu dir='ltr'>
-                        <DropdownMenuTrigger className="ml-auto">
+                        <DropdownMenuTrigger className="ml-4">
                             <Image src={data?.user?.image} width={40} height={40} alt='user' className='rounded-full'  />
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className='bg-[#182137] mr-4 min-w-[200px] rounded-[5px]'>

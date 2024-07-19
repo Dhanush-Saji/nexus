@@ -29,7 +29,6 @@ const Page = () => {
     try {
       setisLoading(true)
       const userCredential = await signIn('credentials',{email:formData?.email,password:formData?.password, redirect: false })
-      console.log(userCredential)
       if (!userCredential?.ok) {
         toast.error(userCredential?.error)
       } else if (userCredential?.ok) {

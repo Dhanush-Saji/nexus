@@ -1,13 +1,14 @@
 'use client'
+import { addChatRef } from '@/converters/ChatMember';
+import { IconMessagePlus } from '@tabler/icons-react'
 import { serverTimestamp, setDoc } from 'firebase/firestore';
-import { signIn, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React from 'react'
-import { v4 as uuid } from 'uuid';
 import { toast } from 'react-toastify';
-import { addChatRef } from '../../converters/ChatMember';
+import { v4 as uuid } from 'uuid';
 
-const ChatNowBtn = () => {
+const CreateChatBtn = () => {
     const chatId = uuid()
     const router = useRouter()
     const session = useSession()
@@ -17,14 +18,14 @@ const ChatNowBtn = () => {
             return
         }
         try {
-            await setDoc(addChatRef(chatId,session?.data?.user?.id),{
+            await setDoc(addChatRef(chatId, session?.data?.user?.id), {
                 userId: session?.data?.user?.id,
-                email:session?.data?.user?.email,
-                timestamp:serverTimestamp(),
-                isAdmin:true,
-                chatId:chatId,
-                image:session?.data?.user?.image || ''
-              })
+                email: session?.data?.user?.email,
+                timestamp: serverTimestamp(),
+                isAdmin: true,
+                chatId: chatId,
+                image: session?.data?.user?.image || ''
+            })
             toast({
                 title: 'Success',
                 description: 'Your chat has been created',
@@ -44,10 +45,10 @@ const ChatNowBtn = () => {
         }
     };
     return (
-        <span onClick={createNewChat} className="whitespace-pre-wrap text-center text-sm p-2 lg:p-0 rounded-full font-medium leading-none tracking-tight text-white lg:text-lg w-fit mx-auto relative z-40">
-            Chat Now
-        </span>
+        <button onClick={createNewChat} className="ml-auto glassBtn1 inline-flex h-11 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,var(--black-color1),45%,#1e2631,55%,var(--black-color1))] bg-[length:200%_100%] px-4 font-medium text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+            <IconMessagePlus />
+        </button>
     )
 }
 
-export default ChatNowBtn
+export default CreateChatBtn
