@@ -7,6 +7,7 @@ import UserTopbarCard from '../cards/UserTopbarCard'
 import ShimmerButton from '../magicui/shimmer-button'
 import { IconMessagePlus } from '@tabler/icons-react'
 import CreateChatBtn from '../btn/CreateChatBtn'
+import LanguageSelect from '../dropdown/LanguageSelect'
 
 const Topbar = () => {
     return (
@@ -20,8 +21,11 @@ const Topbar = () => {
             {/* <div className='z-[4] absolute'> */}
             {/* <ShinyButton text="Shiny Button" /> */}
             {/* <MessageSquareText className='ml-auto mr-4 text-[#e2e8ff]' /> */}
+            <div className='flex ml-auto'>
+            <LanguageSelect />
             <CreateChatBtn />
             <UserTopbarCard />
+            </div>
             {/* <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/90 bg-clip-text text-center text-lg font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
                     Login
                 </span> */}

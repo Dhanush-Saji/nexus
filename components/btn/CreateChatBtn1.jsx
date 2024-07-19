@@ -8,7 +8,7 @@ import React from 'react'
 import { toast } from 'react-toastify';
 import { v4 as uuid } from 'uuid';
 
-const CreateChatBtn = () => {
+const CreateChatBtn1 = () => {
     const chatId = uuid()
     const router = useRouter()
     const session = useSession()
@@ -45,10 +45,10 @@ const CreateChatBtn = () => {
         }
     };
     return (
-        <button onClick={createNewChat} className="ml-4 glassBtn1 inline-flex h-11 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,var(--black-color1),45%,#1e2631,55%,var(--black-color1))] bg-[length:200%_100%] px-4 font-medium text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
-            <IconMessagePlus />
+        <button onClick={createNewChat} className='bg-[var(--custom-white)] text-[var(--primary-color)] flex rounded-[8px] p-3 hover:bg-white'>
+        Create new chat
         </button>
     )
 }
 
-export default CreateChatBtn
+export default CreateChatBtn1

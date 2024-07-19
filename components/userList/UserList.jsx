@@ -47,7 +47,7 @@ const UserList = ({initialChats=[]}) => {
   //   searchUser()
   // }, [searchInput])
   return (
-    <div className="flex px-5 flex-col gap-4">
+    <div className="flex flex-col gap-4">
       {/* <input value={searchInput} onChange={(e) => setsearchInput(e.target.value)} type='text' placeholder='Search or start new chat..'
         className={
           `flex h-11 w-full border-none bg-[#25314C] text-white shadow-input px-3 py-1 text-sm  file:border-0 file:bg-transparent 
@@ -58,7 +58,7 @@ const UserList = ({initialChats=[]}) => {
            group-hover/input:shadow-none transition duration-400 rounded-[8px]
            `}
       /> */}
-      <div className='flex flex-col gap-2 h-[65vh] overflow-y-auto'>
+      <div className='flex flex-col h-[65vh] overflow-y-auto'>
         {
           isLoading?<div className='w-full flex justify-center m-auto'>
             <IconLoader className="mr-2 h-6 w-6 animate-spin" />

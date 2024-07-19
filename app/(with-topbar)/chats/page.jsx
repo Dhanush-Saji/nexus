@@ -20,7 +20,7 @@ const Page = async () => {
   const initialChats = chatsSnapshot.docs.map((doc)=>({
     ...doc.data(),
     timestamp:null
-  }))
+  })) || []
   //   useEffect(()=>{
   // const unsubscribe = onAuthStateChanged(auth,async(user)=>{
   //   if(user){
@@ -39,10 +39,10 @@ const Page = async () => {
   return (
     <main className="flex items-center w-full flex-col relative h-[100vh] px-6">
       <div className="chatGrid mt-24 w-full bg-[#111827] rounded-[10px] border border-gray-50/10 h-[85vh]">
-        <div className="left-part  border-r border-gray-50/10 flex flex-col gap-4 mt-4">
-          <div className="flex gap-2 px-5 items-center">
+        <div className="left-part  border-r border-gray-50/10 flex flex-col">
+          <div className="flex gap-2 px-5 items-center border-b border-gray-50/10 h-16">
             <h3 className=' font-[700] text-[1.5rem]'>Chats</h3>
-            <Badge1 />
+            <Badge1 num={initialChats?.length} />
           </div>
           <UserList initialChats={initialChats} />
         </div>
