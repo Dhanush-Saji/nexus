@@ -7,38 +7,43 @@ import { Skeleton } from '../ui/skeleton'
 import { useSession } from 'next-auth/react'
 import UserAvatar from './UserAvatar'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
+import { toISTConverter } from '@/services/formatter'
 
 const UserMsgCard = ({ chatId }) => {
+    const searchParams = useSearchParams()
+    const search = searchParams.get('chatId')
     const { data: session } = useSession();
     const [messages, loading, error] = useCollectionData(
         limitedSortedMessageRef(chatId)
     )
     const row = (message) => (
         <Link href={`/chats?chatId=${chatId}`}>
-        <div
-            className="flex p-5 items-center space-x-2 cursor-pointer hover:bg-slate-600"
-        >
-            <UserAvatar
-                name={message?.user.name || session?.user.name}
-                image={message?.user.image || session?.user.image}
-            />
-            <div className="flex-1">
-                <p className="font-bold text-[0.9rem]">
-                    {message ?[message?.user.name || session?.user.name].toString().split(" ")[0]:"New Chat"}
-                </p>
-                <p className="text-gray-400 line-clamp-1 text-[0.8rem]">
-                    {message?.translated?.["en"] || "Get your conversation started"}
-                </p>
+            <div
+                className={`${chatId == search?'bg-[#283361]':'hover:bg-[#28336158]'} flex p-5 items-center space-x-2 cursor-pointer`}
+            >
+                <UserAvatar
+                    name={message?.user.name || session?.user.name}
+                    image={message?.user.image || session?.user.image}
+                />
+                <div className="flex-1">
+                    <p className="font-bold text-[0.9rem]">
+                        {message ? [message?.user.name || session?.user.name].toString().split(" ")[0] : "New Chat"}
+                    </p>
+                    <p className="text-gray-400 line-clamp-1 text-[0.8rem]">
+                        {message?.translated?.["en"] || "Get your conversation started"}
+                    </p>
+                </div>
+                <div className="text-xs text-gray-400 text-right">
+                    <p className="mb-auto">
+                        {
+                        message
+                            ? toISTConverter(message.timestamp)
+                            : "No messages yet"}
+                    </p>
+                    <p>chat #{prettyUUID()}</p>
+                </div>
             </div>
-            <div className="text-xs text-gray-400 text-right">
-                <p className="mb-auto">
-                    {message
-                        ? new Date(message.timestamp).toLocaleTimeString()
-                        : "No messages yet"}
-                </p>
-                <p>chat #{prettyUUID()}</p>
-            </div>
-        </div>
         </Link>
     );
     const prettyUUID = (n = 4) => {

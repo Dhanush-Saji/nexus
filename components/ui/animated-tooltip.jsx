@@ -8,6 +8,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import { useSession } from "next-auth/react";
 
 export const AnimatedTooltip = ({
   items,
@@ -29,13 +30,14 @@ export const AnimatedTooltip = ({
     const halfWidth = event.target.offsetWidth / 2;
     x.set(event.nativeEvent.offsetX - halfWidth); // set the x value, which is then used in transform and rotate
   };
-
+  const session = useSession()
   return (
     <>
-      {items.map((item, idx) => (
+      {items?.map((item, idx) => (
+        <div className={session?.data?.user?.id == item.userId?'bg-indigo-400 p-1 rounded-full':''}>
         <div
           className="relative group"
-          key={item.name}
+          key={idx}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -66,7 +68,7 @@ export const AnimatedTooltip = ({
                 <div className="font-bold text-white relative z-30 text-base">
                   {item.name}
                 </div>
-                <div className="text-white text-xs">{item.designation}</div>
+                <div className="text-white text-xs">{item.email}</div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -78,6 +80,7 @@ export const AnimatedTooltip = ({
             alt={item.name}
             className="object-cover !m-0 !p-0 object-top rounded-full h-10 w-10 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
           />
+        </div>
         </div>
       ))}
     </>

@@ -1,24 +1,54 @@
+'use client'
+import { messageRef } from '@/converters/Messages'
 import { IconSend2 } from '@tabler/icons-react'
-import React from 'react'
+import { addDoc, serverTimestamp } from 'firebase/firestore'
+import { useSession } from 'next-auth/react'
+import React, { useState } from 'react'
+import ShimmerButton from '../magicui/shimmer-button'
 
 const ChatInput = ({chatId}) => {
+  const session = useSession()
+  const [inputText, setinputText] = useState('')
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if(inputText == ''){
+      return
+    }
+    try {
+      const userToStore = {
+        id:session.data.user.id,
+        email:session.data.user.email,
+        name:session.data.user.name,
+        image:session.data.user.image || ''
+    }
+    await addDoc(messageRef(chatId),{
+        input:inputText,
+        timestamp: serverTimestamp(),
+        user:userToStore,
+    })
+    setinputText('')
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="message-send area bg-[#111827] px-4 py-4">
-            <div className="flex gap-2">
-          <input type='text' placeholder='Enter message ..'
+            <form onSubmit={handleSubmit} className="flex gap-2">
+          <input value={inputText} onChange={(e)=>{setinputText(e.target.value)}} type='text' placeholder='Enter message ..'
           className={
-            `flex text-neutral-700 h-10 w-full border-none shadow-input px-3 text-sm  file:border-0 file:bg-transparent bg-neutral-200
+            `flex text-white h-10 w-full border-none px-3 text-sm  file:border-0 file:bg-transparent bg-white/10
           file:text-sm file:font-medium placeholder-text-neutral-600 
-          focus-visible:outline-none focus-visible:ring-[2px] focus-visible:ring-neutral-600
+          focus-visible:outline-none focus-visible:ring-[0px] focus-visible:ring-neutral-600
            disabled:cursor-not-allowed disabled:opacity-50
-           shadow-[0px_0px_1px_1px_var(--neutral-700)]
            group-hover/input:shadow-none transition duration-400 rounded-[8px]
            `}
         />
-        <button className='bg-[#1c263e] p-2 px-4 rounded-[8px]'>
+        <div type='submit' className={`relative z-[9999] ${inputText == ''?'opacity-40 pointer-events-none':'opacity-100 pointer-events-auto cursor-pointer'}`}>
+        <ShimmerButton className="shadow-2xl w-fit">
             <IconSend2 />
-        </button>
-            </div>
+          </ShimmerButton>
+        </div>
+            </form>
           </div>
   )
 }

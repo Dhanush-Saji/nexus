@@ -62,7 +62,7 @@ const UserList = ({initialChats=[]}) => {
           isLoading?<div className='w-full flex justify-center m-auto'>
             <IconLoader className="mr-2 h-6 w-6 animate-spin" />
             </div>:members?.length>0? members?.map((item,index)=>(
-            <UserMsgCard key={index} chatId={item?.chatId} />
+            <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
           )):
           <div className='w-full flex m-auto justify-center opacity-50'>
             No chats

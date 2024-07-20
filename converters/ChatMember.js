@@ -5,6 +5,7 @@ const chatMembersConverter = {
     toFirestore: function(member){
         return {
             userId:member.userId,
+            name:member.name,
             email:member.email,
             timestamp: member.timestamp,
             isAdmin:member.isAdmin,
@@ -16,6 +17,7 @@ const chatMembersConverter = {
         const data = snapshot.data(options);
         return {
             userId:snapshot.id,
+            name:data.name,
             email:data.email,
             timestamp: data.timestamp,
             isAdmin:data.isAdmin,

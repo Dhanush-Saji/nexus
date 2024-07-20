@@ -20,6 +20,7 @@ const CreateChatBtn1 = () => {
         try {
             await setDoc(addChatRef(chatId, session?.data?.user?.id), {
                 userId: session?.data?.user?.id,
+                name: session?.data?.user?.name,
                 email: session?.data?.user?.email,
                 timestamp: serverTimestamp(),
                 isAdmin: true,

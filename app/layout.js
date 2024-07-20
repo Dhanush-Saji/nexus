@@ -20,8 +20,8 @@ export default async function RootLayout({ children }) {
   const session = getServerSession(authOptions);
   return (
     <AuthProvider>
-      <html lang="en">
-        <body className={`${inter.className} ${onest.className}`}>
+      <html lang="en" suppressHydrationWarning={true}>
+        <body className={`${inter.className} ${onest.className}`} suppressHydrationWarning={true}>
           <FirebaseAuthProvider>
             <ToastContext>
               <ParticleBg>{children}</ParticleBg>

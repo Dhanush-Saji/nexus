@@ -11,6 +11,8 @@ import { getDocs } from 'firebase/firestore'
 import { sortedMessageRef } from '@/converters/Messages'
 import { chatMembersRef } from '@/converters/ChatMember'
 import ChatInput from '@/components/input/ChatInput'
+import ChatMessages from '../ChatMessages/ChatMessages'
+import ChatMembersBadge from '@/components/badges/ChatMembersBadge'
 
 const ChatRightSection = () => {
   const [initialMessages, setinitialMessages] = useState(null)
@@ -18,20 +20,30 @@ const ChatRightSection = () => {
   const session = useSession()
   const searchParams = useSearchParams()
   const search = searchParams.get('chatId')
-  const checkInitialMsgAndAccess = async () => {
+  const checkInitialMsg = async () => {
     try {
       if(search){
-        const initialMessages = (await getDocs(sortedMessageRef(search))).docs.map((doc)=>doc.data())
-        console.log('initialMessages',initialMessages);
-        const accessCal = (await getDocs(chatMembersRef(search))).docs.map((doc)=>doc.id).includes(session?.data?.user?.id)
-        console.log('accessCal',accessCal);
+        const initialMessagesRes = (await getDocs(sortedMessageRef(search))).docs.map((doc)=>doc.data())
+        setinitialMessages(initialMessagesRes)
       }
     } catch (error) {
       console.error(error);
     }
   };
+  const checkAccess = async () => {
+    try {
+      const accessCal = (await getDocs(chatMembersRef(search))).docs.map((doc)=>doc.id).includes(session?.data?.user?.id)
+      sethasAccess(accessCal);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(()=>{
-    checkInitialMsgAndAccess()
+    if(session.status == 'authenticated')
+    checkAccess()
+  },[session])
+  useEffect(()=>{
+    checkInitialMsg()
   },[])
   const people = [
     {
@@ -55,7 +67,7 @@ const ChatRightSection = () => {
       <div className="right-part h-full flex flex-col">
           <div className="chat-header flex justify-between px-3 h-16 border-b border-gray-50/10">
           <div className="flex gap-4 items-center">
-          <AnimatedTooltip items={people} />
+          <ChatMembersBadge chatId={search} />
           </div>
           <div className='flex gap-2 items-center'>
             <button className='rounded-full border p-1 transition-all hover:bg-white hover:text-neutral-900'>
@@ -70,13 +82,7 @@ const ChatRightSection = () => {
           </div>
           </div>
           <div className="chatting-portion bg-gradient-to-b from-[#131a29] to-[#0b1019] h-[67vh] overflow-y-scroll px-4 flex flex-col">
-            <MessageCard />
-            <MessageCard />
-            <MessageCard />
-            <MessageCard direction='right' />
-            <MessageCard direction='right' />
-            <MessageCard />
-            <MessageCard />
+            <ChatMessages chatId={search} session={session} initialMessages={initialMessages} />
           </div>
           <ChatInput chatId={search} />
         </div>
