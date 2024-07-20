@@ -1,26 +1,34 @@
+'use client'
 import Badge1 from '@/components/badges/Badge1'
 import UserList from '@/components/userList/UserList'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import { doc, getDoc, getDocs } from 'firebase/firestore'
-import Image from 'next/image'
-import React from 'react'
+import {getDocs } from 'firebase/firestore'
+import React, { useEffect, useState } from 'react'
 import './chats.css'
 import ChatRightSection from '@/components/section/ChatRightSection/ChatRightSection'
 import { useSession } from 'next-auth/react'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/route'
 import { chatMemberCollectionGroupRef } from '@/converters/ChatMember'
 
-const Page = async () => {
-  const session = await getServerSession(authOptions)
-  console.log(session)
-  const chatsSnapshot = await getDocs(
-    chatMemberCollectionGroupRef(session?.user.id)
-  )
-  const initialChats = chatsSnapshot.docs.map((doc)=>({
-    ...doc.data(),
-    timestamp:null
-  })) || []
+const Page = () => {
+  const session = useSession()
+ const [initialChats, setinitialChats] = useState([])
+
+ const snapFn = async () => {
+  try {
+    const chatsSnapshot = await getDocs(
+      chatMemberCollectionGroupRef(session?.data?.user?.id)
+    )
+    const initialCustomChats = chatsSnapshot.docs.map((doc)=>({
+      ...doc.data(),
+      timestamp:null
+    })) || []
+    setinitialChats(initialCustomChats)
+  } catch (error) {
+    console.error(error);
+  }
+ };
+  useEffect(()=>{
+    snapFn()
+  },[])
   //   useEffect(()=>{
   // const unsubscribe = onAuthStateChanged(auth,async(user)=>{
   //   if(user){
@@ -46,7 +54,7 @@ const Page = async () => {
           </div>
           <UserList initialChats={initialChats} />
         </div>
-        <ChatRightSection user={session?.user} />
+        <ChatRightSection />
       </div>
     </main>
   )

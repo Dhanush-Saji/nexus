@@ -11,7 +11,6 @@ import {useCollectionData} from 'react-firebase-hooks/firestore'
 
 const UserList = ({initialChats=[]}) => {
   const {data:session} = useSession()
-  console.log(session)
   const [isLoading, setisLoading] = useState(false)
   const [searchInput, setsearchInput] = useState('')
   const [userListArray, setuserListArray] = useState([])

@@ -6,6 +6,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Skeleton } from '../ui/skeleton'
 import { useSession } from 'next-auth/react'
 import UserAvatar from './UserAvatar'
+import Link from 'next/link'
 
 const UserMsgCard = ({ chatId }) => {
     const { data: session } = useSession();
@@ -13,6 +14,7 @@ const UserMsgCard = ({ chatId }) => {
         limitedSortedMessageRef(chatId)
     )
     const row = (message) => (
+        <Link href={`/chats?chatId=${chatId}`}>
         <div
             className="flex p-5 items-center space-x-2 cursor-pointer hover:bg-slate-600"
         >
@@ -37,6 +39,7 @@ const UserMsgCard = ({ chatId }) => {
                 <p>chat #{prettyUUID()}</p>
             </div>
         </div>
+        </Link>
     );
     const prettyUUID = (n = 4) => {
         return chatId.substring(0, n);
