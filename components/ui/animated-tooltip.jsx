@@ -34,10 +34,10 @@ export const AnimatedTooltip = ({
   return (
     <>
       {items?.map((item, idx) => (
-        <div className={session?.data?.user?.id == item.userId?'bg-indigo-400 p-1 rounded-full':''}>
+        <div key={idx} className={session?.data?.user?.id == item.userId?'bg-indigo-400 p-1 rounded-full':''}>
         <div
           className="relative group"
-          key={idx}
+          
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
