@@ -12,9 +12,8 @@ const MessageCard = ({direction='left',message,language}) => {
             <div className='flex flex-col'>
             <div className='bg-[#25314c] rounded-[18px] rounded-tr-none p-2 px-4 flex gap-2 items-center'>
                     <span className='text-[0.9rem]'>
-                    {message?.translated?.[language] || message?.input}
+                    {!message?.translated?<Loader />:message?.translated?.[language]}
                     </span>
-                    {/* {!message?.translated && <Loader />} */}
                 </div>
                 <p className=' opacity-40 text-[0.8rem] text-right mt-1'>{toISTConverter(message.timestamp)}</p>
             </div>
@@ -24,9 +23,8 @@ const MessageCard = ({direction='left',message,language}) => {
                 <div className='flex flex-col'>
                 <div className='bg-[#25314c] rounded-[18px] rounded-tr-none p-2 px-4 flex gap-2 items-center'>
                     <span className='text-[0.9rem]'>
-                    {message?.translated?.[language] || message?.input}
+                    {!message?.translated?<Loader />:message?.translated?.[language]}
                     </span>
-                    {/* {!message?.translated && <Loader />} */}
                 </div>
                     <p className=' opacity-40 text-[0.8rem] text-left mt-1'>{toISTConverter(message.timestamp)}</p>
                 </div>

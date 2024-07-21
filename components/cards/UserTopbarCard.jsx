@@ -8,7 +8,7 @@ import Image from 'next/image'
 const UserTopbarCard = () => {
     const { data,status } = useSession()
     return (
-        <>
+        <div className='hidden md:flex items-center'>
             {
                 status == 'authenticated' ? <>
                     <DropdownMenu dir='ltr'>
@@ -27,7 +27,7 @@ const UserTopbarCard = () => {
                         Login
                     </button>
             }
-        </>
+        </div>
     )
 }
 

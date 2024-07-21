@@ -2,7 +2,7 @@
 import { addChatRef } from '@/converters/ChatMember';
 import { IconMessagePlus } from '@tabler/icons-react'
 import { serverTimestamp, setDoc } from 'firebase/firestore';
-import { useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 import { toast } from 'react-toastify';
@@ -35,8 +35,8 @@ const CreateChatBtn = () => {
             toast.error(`${err}`)
         }
     };
-    return (
-        <div onClick={createNewChat} className="ml-4 glassBtn1 inline-flex h-11 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,var(--black-color1),45%,#1e2631,55%,var(--black-color1))] bg-[length:200%_100%] px-4 font-medium text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
+    return session.status == 'authenticated' && (
+        <div onClick={createNewChat} className="inline-flex ml-4 glassBtn1 h-11 animate-shimmer items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,var(--black-color1),45%,#1e2631,55%,var(--black-color1))] bg-[length:200%_100%] px-4 font-medium text-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50">
             <IconMessagePlus />
         </div>
     )

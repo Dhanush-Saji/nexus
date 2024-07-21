@@ -9,14 +9,15 @@ import { IconMessagePlus } from '@tabler/icons-react'
 import CreateChatBtn from '../btn/CreateChatBtn'
 import LanguageSelect from '../dropdown/LanguageSelect'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip'
+import MobMenubar from '../section/MobMenubar'
 
 const Topbar = () => {
     return (
-        <header className='fixed items-center flex w-full px-6 h-[5rem] bg-[rgba(255,255,255,0.03)] backdrop-blur-[8px] z-[99999] topbar'>
+        <header className='fixed items-center flex w-full px-6 h-[4.3rem] md:h-[5rem] bg-[rgba(255,255,255,0.03)] backdrop-blur-[8px] z-[99999] topbar'>
             <Link href={'/'}>
-                <div className='flex gap-4 items-center'>
-                    <Image placeholder='empty' priority={true} alt='logo' src={'/logo.png'} width={40} height={40} className=' object-contain' style={{ width: 'auto', height: 'auto' }} />
-                    <span className='text-center text-2xl font-semibold leading-none'>Nexus</span>
+                <div className='flex gap-2 md:gap-4 items-center'>
+                    <Image placeholder='empty' priority={true} alt='logo' src={'/logo.png'} width={40} height={40} className=' object-contain !w-[30px] !h-[30px] md:!h-[40px] md:!w-[40px]' style={{ width: 'auto', height: 'auto' }} />
+                    <span className='text-center text-xl md:text-2xl font-semibold leading-none'>Nexus</span>
                 </div>
             </Link>
             {/* <div className='z-[4] absolute'> */}
@@ -34,8 +35,8 @@ const Topbar = () => {
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
-
                 <UserTopbarCard />
+                <MobMenubar />
             </div>
             {/* <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/90 bg-clip-text text-center text-lg font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
                     Login

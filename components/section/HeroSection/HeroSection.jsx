@@ -37,7 +37,7 @@ const HeroSection = () => {
           </span>
         </TextRevealDirectionOpacity>
         <TextRevealDirectionOpacity delay={0.6} direction='tb'>
-          <span className='mt-1 text-lg md:text-lg opacity-70 font-[300]'>You speak your language, they speak their language.</span>
+          <span className='mt-1 text-md text-center md:text-lg opacity-60 font-[300] max-w-[80vw]'>You speak your language, they speak their language.</span>
           <ShimmerButton className="shadow-2xl mt-4 w-fit mx-auto">
             <ChatNowBtn />
           </ShimmerButton>
