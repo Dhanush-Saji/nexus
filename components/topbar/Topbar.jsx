@@ -8,13 +8,14 @@ import ShimmerButton from '../magicui/shimmer-button'
 import { IconMessagePlus } from '@tabler/icons-react'
 import CreateChatBtn from '../btn/CreateChatBtn'
 import LanguageSelect from '../dropdown/LanguageSelect'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip'
 
 const Topbar = () => {
     return (
         <header className='fixed items-center flex w-full px-6 h-[5rem] bg-[rgba(255,255,255,0.03)] backdrop-blur-[8px] z-[99999] topbar'>
             <Link href={'/'}>
                 <div className='flex gap-4 items-center'>
-                    <Image alt='logo' src={'/logo.png'} width={40} height={40} objectFit='contain' />
+                    <Image placeholder='empty' priority={true} alt='logo' src={'/logo.png'} width={40} height={40} className=' object-contain' style={{ width: 'auto', height: 'auto' }} />
                     <span className='text-center text-2xl font-semibold leading-none'>Nexus</span>
                 </div>
             </Link>
@@ -22,9 +23,19 @@ const Topbar = () => {
             {/* <ShinyButton text="Shiny Button" /> */}
             {/* <MessageSquareText className='ml-auto mr-4 text-[#e2e8ff]' /> */}
             <div className='flex ml-auto'>
-            <LanguageSelect />
-            <CreateChatBtn />
-            <UserTopbarCard />
+                <LanguageSelect />
+                <TooltipProvider delayDuration={0}>
+                    <Tooltip>
+                        <TooltipTrigger>
+                            <CreateChatBtn />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>Add new chat</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
+
+                <UserTopbarCard />
             </div>
             {/* <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/90 bg-clip-text text-center text-lg font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
                     Login

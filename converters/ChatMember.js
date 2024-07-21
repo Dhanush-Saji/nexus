@@ -27,5 +27,10 @@ const chatMembersConverter = {
     }
 }
 export const addChatRef = (chatId,userId) =>doc(firestoreDb,'chats',chatId,'members',userId).withConverter(chatMembersConverter)
+export const chatMembersAdminRef = (chatId) =>
+    query(
+        collection(firestoreDb,'chats',chatId,'members'),
+        where("isAdmin","==",true)
+    ).withConverter(chatMembersConverter)
 export const chatMemberCollectionGroupRef = (userId) =>query(collectionGroup(firestoreDb,'members'),where("userId","==",userId)).withConverter(chatMembersConverter)
 export const chatMembersRef = (chatId) =>collection(firestoreDb,'chats',chatId,'members').withConverter(chatMembersConverter)

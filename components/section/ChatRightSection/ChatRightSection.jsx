@@ -1,11 +1,11 @@
 'use client'
-import { IconMessage, IconPhone, IconSend2, IconUserPlus, IconVideo } from '@tabler/icons-react'
+import { IconMessage, IconPhone, IconSend2, IconShare, IconTrashX, IconUserPlus, IconVideo } from '@tabler/icons-react'
 import React, { useEffect, useState } from 'react'
 import MessageCard from '../MessageCard/MessageCard'
 import Image from 'next/image'
 import { AnimatedTooltip } from '@/components/ui/animated-tooltip'
 import CreateChatBtn1 from '@/components/btn/CreateChatBtn1'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { getDocs } from 'firebase/firestore'
 import { sortedMessageRef } from '@/converters/Messages'
@@ -13,8 +13,11 @@ import { chatMembersRef } from '@/converters/ChatMember'
 import ChatInput from '@/components/input/ChatInput'
 import ChatMessages from '../ChatMessages/ChatMessages'
 import ChatMembersBadge from '@/components/badges/ChatMembersBadge'
+import { Tooltip, TooltipContent, TooltipProvider,TooltipTrigger } from '@/components/ui/tooltip'
+import ChatSettings from '../ChatSettings/ChatSettings'
 
 const ChatRightSection = () => {
+  const router = useRouter()
   const [initialMessages, setinitialMessages] = useState(null)
   const [hasAccess, sethasAccess] = useState(false)
   const session = useSession()
@@ -22,8 +25,8 @@ const ChatRightSection = () => {
   const search = searchParams.get('chatId')
   const checkInitialMsg = async () => {
     try {
-      if(search){
-        const initialMessagesRes = (await getDocs(sortedMessageRef(search))).docs.map((doc)=>doc.data())
+      if (search) {
+        const initialMessagesRes = (await getDocs(sortedMessageRef(search))).docs.map((doc) => doc.data())
         setinitialMessages(initialMessagesRes)
       }
     } catch (error) {
@@ -32,19 +35,23 @@ const ChatRightSection = () => {
   };
   const checkAccess = async () => {
     try {
-      const accessCal = (await getDocs(chatMembersRef(search))).docs.map((doc)=>doc.id).includes(session?.data?.user?.id)
+      const accessCal = (await getDocs(chatMembersRef(search))).docs.map((doc) => doc.id).includes(session?.data?.user?.id)
       sethasAccess(accessCal);
+      if (!accessCal) {
+        router.push('/chats')
+        return
+      }
     } catch (error) {
       console.error(error);
     }
   };
-  useEffect(()=>{
-    if(session.status == 'authenticated')
-    checkAccess()
-  },[session])
-  useEffect(()=>{
+  useEffect(() => {
+    if (session.status == 'authenticated')
+      checkAccess()
+  }, [session])
+  useEffect(() => {
     checkInitialMsg()
-  },[])
+  }, [])
   const people = [
     {
       id: 1,
@@ -62,40 +69,30 @@ const ChatRightSection = () => {
     },]
   return (
     <>
-    {
-      search?
-      <div className="right-part h-full flex flex-col">
-          <div className="chat-header flex justify-between px-3 h-16 border-b border-gray-50/10">
-          <div className="flex gap-4 items-center">
-          <ChatMembersBadge chatId={search} />
+      {
+        search ?
+          <div className="right-part h-full flex flex-col">
+            <div className="chat-header flex justify-between px-3 h-16 border-b border-gray-50/10">
+              <div className="flex gap-4 items-center">
+                <ChatMembersBadge chatId={search} />
+              </div>
+              <ChatSettings />
+            </div>
+            <div className="chatting-portion bg-gradient-to-b from-[#131a29] to-[#0b1019] h-[67vh] overflow-y-scroll px-4 flex flex-col">
+              <ChatMessages chatId={search} session={session} initialMessages={initialMessages} />
+            </div>
+            <ChatInput chatId={search} />
           </div>
-          <div className='flex gap-2 items-center'>
-            <button className='rounded-full border p-1 transition-all hover:bg-white hover:text-neutral-900'>
-            <IconPhone className=' scale-[0.8]' />
-            </button>
-            <button className='rounded-full border p-1 transition-all hover:bg-white hover:text-neutral-900'>
-            <IconVideo className=' scale-[0.8]' />
-            </button>
-            <button className='rounded-full border p-1 transition-all hover:bg-white hover:text-neutral-900'>
-            <IconUserPlus className=' scale-[0.8]' />
-            </button>
+          :
+          <div className="flex flex-col justify-center items-center m-auto space-y-2">
+            <IconMessage className="h-10 w-10" />
+            <h1 className="text-5xl font-extralight">Welcome!</h1>
+            <h2 className="mb-2">Lets get you started by opening your chats!</h2>
+            {/* <CreateChatBtn1 /> */}
           </div>
-          </div>
-          <div className="chatting-portion bg-gradient-to-b from-[#131a29] to-[#0b1019] h-[67vh] overflow-y-scroll px-4 flex flex-col">
-            <ChatMessages chatId={search} session={session} initialMessages={initialMessages} />
-          </div>
-          <ChatInput chatId={search} />
-        </div>
-    :
-    <div className="flex flex-col justify-center items-center m-auto space-y-2">
-      <IconMessage className="h-10 w-10" />
-      <h1 className="text-5xl font-extralight">Welcome!</h1>
-      <h2 className="mb-2">Lets get you started by opening your chats!</h2>
-      {/* <CreateChatBtn1 /> */}
-    </div>
-    }
+      }
     </>
-    
+
   )
 }
 

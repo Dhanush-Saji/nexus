@@ -5,11 +5,9 @@ import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { AnimatedTooltip } from '../ui/animated-tooltip'
 
 const ChatMembersBadge = ({chatId}) => {
-    console.log(chatId);
     const [members,loading,error] = useCollectionData(
         chatMembersRef(chatId)
     )
-    console.log(members);
   return (
     <>
     {

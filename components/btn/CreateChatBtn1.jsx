@@ -27,22 +27,12 @@ const CreateChatBtn1 = () => {
                 chatId: chatId,
                 image: session?.data?.user?.image || ''
             })
-            toast({
-                title: 'Success',
-                description: 'Your chat has been created',
-                className: 'bg-green-600 text-white',
-                duration: 2000
-            })
+            toast.success('Your chat has been created')
             router.push(`/chats`)
         } catch (error) {
             console.log(error)
             let err = error?.message || ''
-            toast({
-                title: 'Error',
-                description: `${err}`,
-                className: 'bg-red-600 text-white',
-                duration: 2000
-            })
+            toast.error(`${err}`)
         }
     };
     return (
