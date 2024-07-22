@@ -46,7 +46,7 @@ const UserList = ({initialChats=[]}) => {
   //   searchUser()
   // }, [searchInput])
   return (
-      <div className='flex flex-col h-[77vh] overflow-y-auto'>
+      <div className='flex flex-col h-[72vh] md:h-[77vh] overflow-y-auto'>
         {
           isLoading?<div className='w-full flex justify-center m-auto'>
             <IconLoader className="mr-2 h-6 w-6 animate-spin" />
