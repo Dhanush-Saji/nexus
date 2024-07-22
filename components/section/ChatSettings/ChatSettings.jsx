@@ -6,7 +6,7 @@ import React from 'react'
 
 const ChatSettings = ({chatId}) => {
   return (
-    <div className='flex gap-2 items-center'>
+    <div className='flex gap-3 md:gap-2 items-center'>
     {/* <div className='rounded-full border p-1 transition-all hover:bg-white hover:text-neutral-900'>
 <IconPhone className=' scale-[0.8]' />
 </div>
