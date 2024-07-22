@@ -55,13 +55,13 @@ const ChatRightSection = () => {
       {
         search ?
           <div className="right-part h-full flex flex-col w-full">
-            <div className="chat-header flex justify-between px-3  h-[7vh] border-b border-gray-50/10">
+            <div className="chat-header flex justify-between px-3  h-[8vh] border-b border-gray-50/10">
               <div className="flex gap-4 items-center">
                 <ChatMembersBadge chatId={search} />
               </div>
               <ChatSettings chatId={search} />
             </div>
-            <div className="chatting-portion bg-gradient-to-b from-[#131a29] to-[#0b1019] h-[69vh] overflow-y-auto px-4 flex flex-col">
+            <div className="chatting-portion bg-gradient-to-b from-[#131a29] to-[#0b1019] h-[68vh] overflow-y-auto px-4 flex flex-col">
               <ChatMessages chatId={search} session={session?.data} initialMessages={initialMessages} />
             </div>
             <ChatInput chatId={search} />
