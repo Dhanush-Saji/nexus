@@ -41,13 +41,13 @@ const DeleteChatButton = ({ chatId }) => {
             {
                 adminId == session?.user.id && (
                     <>
-                        <Dialog open={open} onOpenChange={setopen}>
+                        <Dialog open={open} onOpenChange={setopen} className='max-w-[80vw]'>
                             <DialogTrigger asChild>
                                 <div className='rounded-full p-1 transition-all bg-red-800 hover:bg-red-600'>
                                     <IconTrashX className=' scale-[0.8]' />
                                 </div>
                             </DialogTrigger>
-                            <DialogContent className='sm:max-w-md bg-[#05051F]'>
+                            <DialogContent className='max-w-[85vw] sm:max-w-[30rem] bg-[#05051F]'>
                                 <DialogHeader>
                                     <DialogTitle>Are you sure?</DialogTitle>
                                     <DialogDescription>This will delete chat for all user</DialogDescription>

@@ -6,12 +6,13 @@ import React from 'react'
 import ChatSettings from '../ChatSettings/ChatSettings'
 import ChatMessages from '../ChatMessages/ChatMessages'
 import ChatInput from '@/components/input/ChatInput'
+import { redirect } from "next/navigation";
 
 const MobChatSection = async({chatId,session}) => {
     const initialMessagesRes = (await getDocs(sortedMessageRef(chatId))).docs.map((doc) => doc.data())
     const hasAccess = (await getDocs(chatMembersRef(chatId))).docs.map((doc) => doc.id).includes(session?.user?.id)
     if(!hasAccess){
-        redirect('/chat?error=permission')
+        redirect('/chats')
       }
   return (
     <div className='w-full'>
