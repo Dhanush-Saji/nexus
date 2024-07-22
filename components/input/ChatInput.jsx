@@ -32,8 +32,8 @@ const ChatInput = ({chatId}) => {
     }
   };
   return (
-    <div className="message-send area bg-[#111827] px-4 py-4">
-            <form onSubmit={handleSubmit} className="flex gap-2">
+    <div className="message-send area bg-[#111827] px-4 flex my-auto h-[7vh]">
+            <form onSubmit={handleSubmit} className="flex gap-2 w-full items-center">
           <input value={inputText} onChange={(e)=>{setinputText(e.target.value)}} type='text' placeholder='Enter message ..'
           className={
             `flex text-white h-10 w-full border-none px-3 text-sm  file:border-0 file:bg-transparent bg-white/10

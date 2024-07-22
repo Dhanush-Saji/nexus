@@ -8,12 +8,14 @@ import { toast } from 'react-toastify'
 import { getDocs, serverTimestamp, setDoc } from 'firebase/firestore'
 import { addChatRef } from '@/converters/ChatMember'
 import { getUserByEmailRef } from '@/converters/User'
+import { useSession } from 'next-auth/react'
 
-const InviteUser = ({session,chatId}) => {
+const InviteUser = ({chatId}) => {
+    const session = useSession()
     const [open, setopen] = useState(false)
     const [inputVal, setinputVal] = useState('')
     const onSubmit = async() =>{
-        if(!session?.user.id) return
+        if(!session?.data?.user.id) return
         const querySnapShot = await getDocs(getUserByEmailRef(inputVal))
         if(querySnapShot.empty){
             toast.error('Please enter an email of a registered user or send invites once they signed up')

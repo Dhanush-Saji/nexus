@@ -1,0 +1,34 @@
+import ChatMembersBadge from '@/components/badges/ChatMembersBadge'
+import { chatMembersRef } from '@/converters/ChatMember'
+import { sortedMessageRef } from '@/converters/Messages'
+import { getDocs } from 'firebase/firestore'
+import React from 'react'
+import ChatSettings from '../ChatSettings/ChatSettings'
+import ChatMessages from '../ChatMessages/ChatMessages'
+import ChatInput from '@/components/input/ChatInput'
+
+const MobChatSection = async({chatId,session}) => {
+    const initialMessagesRes = (await getDocs(sortedMessageRef(chatId))).docs.map((doc) => doc.data())
+    const hasAccess = (await getDocs(chatMembersRef(chatId))).docs.map((doc) => doc.id).includes(session?.user?.id)
+    if(!hasAccess){
+        redirect('/chat?error=permission')
+      }
+  return (
+    <div className='w-full'>
+      <div className="right-part h-full flex flex-col w-full">
+            <div className="chat-header flex justify-between px-3  h-[7vh] border-b border-gray-50/10">
+              <div className="flex gap-4 items-center">
+                <ChatMembersBadge chatId={chatId} />
+              </div>
+              <ChatSettings chatId={chatId} />
+            </div>
+            <div className="chatting-portion bg-gradient-to-b from-[#131a29] to-[#0b1019] h-[69vh] overflow-y-auto px-4 flex flex-col">
+              <ChatMessages chatId={chatId} session={session} initialMessages={initialMessagesRes} />
+            </div>
+            <ChatInput chatId={chatId} />
+          </div>
+    </div>
+  )
+}
+
+export default MobChatSection

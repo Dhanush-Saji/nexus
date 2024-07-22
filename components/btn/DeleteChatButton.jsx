@@ -1,3 +1,4 @@
+'use client'
 import useAdminId from '@/hooks/useAdminId'
 import { useSession } from 'next-auth/react'
 import React, { useState } from 'react'

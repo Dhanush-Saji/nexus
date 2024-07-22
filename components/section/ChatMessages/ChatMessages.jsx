@@ -29,7 +29,9 @@ const ChatMessages = ({chatId,session,initialMessages}) => {
         )}
         {
             messages?.map((message,index)=>(
-                <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.data?.user?.id?'right':'left'} />
+                <React.Fragment key={index}>
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                </React.Fragment>
             ))
         }
         <div ref={messageEndRef} />

@@ -18,6 +18,8 @@ const UserMsgCard = ({ chatId }) => {
         limitedSortedMessageRef(chatId)
     )
     const row = (message) => (
+        <>
+        <div className='hidden md:block'>
         <Link href={`/chats?chatId=${chatId}`}>
             <div
                 className={`${chatId == search?'bg-[#283361]':'hover:bg-[#28336158]'} flex p-5 items-center space-x-2 cursor-pointer`}
@@ -45,6 +47,37 @@ const UserMsgCard = ({ chatId }) => {
                 </div>
             </div>
         </Link>
+        </div>
+        <div className='block md:hidden'>
+        <Link href={`/chats/${chatId}`}>
+            <div
+                className={`${chatId == search?'bg-[#283361]':'hover:bg-[#28336158]'} flex p-5 items-center space-x-2 cursor-pointer`}
+            >
+                <UserAvatar
+                    name={message?.user.name || session?.user.name}
+                    image={message?.user.image || session?.user.image}
+                />
+                <div className="flex-1">
+                    <p className="font-bold text-[0.9rem]">
+                        {message ? [message?.user.name || session?.user.name].toString().split(" ")[0] : "New Chat"}
+                    </p>
+                    <p className="text-gray-400 line-clamp-1 text-[0.8rem]">
+                        {message?.translated?.["en"] || "Get your conversation started"}
+                    </p>
+                </div>
+                <div className="text-xs text-gray-400 text-right">
+                    <p className="mb-auto">
+                        {
+                        message
+                            ? toISTConverter(message.timestamp)
+                            : "No messages yet"}
+                    </p>
+                    <p>chat #{prettyUUID()}</p>
+                </div>
+            </div>
+        </Link>
+        </div>
+        </>
     );
     const prettyUUID = (n = 4) => {
         return chatId.substring(0, n);

@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react'
 import { toast } from 'react-toastify';
 import { v4 as uuid } from 'uuid';
+import { Button } from '../ui/button';
 
 const CreateChatBtn1 = () => {
     const chatId = uuid()
@@ -36,9 +37,7 @@ const CreateChatBtn1 = () => {
         }
     };
     return (
-        <button onClick={createNewChat} className='bg-[var(--custom-white)] text-[var(--primary-color)] flex rounded-[8px] p-3 hover:bg-white'>
-        Create new chat
-        </button>
+        <Button onClick={createNewChat} className='w-full ' variant="outline">  <IconMessagePlus className='mr-2' /> New chat</Button>
     )
 }
 

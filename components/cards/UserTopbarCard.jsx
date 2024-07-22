@@ -18,7 +18,6 @@ const UserTopbarCard = () => {
                         <DropdownMenuContent className='bg-[#182137] mr-4 min-w-[200px] rounded-[5px] text-[#e2e8ff]'>
                             <DropdownMenuLabel>{data?.user?.name}</DropdownMenuLabel>
                             <DropdownMenuSeparator className='bg-neutral-500' />
-                            <DropdownMenuItem className='cursor-pointer hover:bg-[#1c263e]'>Profile</DropdownMenuItem>
                             <DropdownMenuItem onClick={()=>signOut()} className='cursor-pointer hover:bg-[#1c263e]'>Sign Out</DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>

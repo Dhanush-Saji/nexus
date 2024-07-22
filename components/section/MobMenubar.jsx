@@ -9,21 +9,24 @@ import {
     SheetTrigger,
 } from '../ui/sheet'
 import { IconMenu2 } from '@tabler/icons-react'
-import { signIn, useSession } from 'next-auth/react'
+import { signIn, signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
+import { Button } from '../ui/button'
+import Link from 'next/link'
+import CreateChatBtn1 from '../btn/CreateChatBtn1'
 
 const MobMenubar = () => {
     const { data,status } = useSession()
     return (
-        <div className='flex items-center md:hidden'>
+        <div className='flex items-center md:hidden ml-4'>
             {
                 status == 'authenticated' ?
             <Sheet>
                 <SheetTrigger>
                     <IconMenu2 className='m-auto' />
                 </SheetTrigger>
-                <SheetContent>
-                    <div className='flex flex-col'>
+                <SheetContent className='flex'>
+                    <div className='flex flex-col flex-1 gap-4'>
                     <div className='flex gap-2 items-center'>
                     <Image src={data?.user?.image} width={40} height={40} alt='user' className='rounded-full'  />
                     <div className='flex flex-col justify-center'>
@@ -31,6 +34,11 @@ const MobMenubar = () => {
                         <span className='text-[0.8rem]'>{data?.user?.email}</span>
                     </div>
                     </div>
+                    <CreateChatBtn1 />
+                    <Link href={'/chats'}>
+                    <Button className='w-full'>Go to chats</Button>
+                    </Link>
+                    <Button onClick={()=>signOut()} variant="destructive" className='mt-auto'>Sign Out</Button>
                     </div>
                 </SheetContent>
             </Sheet>:
