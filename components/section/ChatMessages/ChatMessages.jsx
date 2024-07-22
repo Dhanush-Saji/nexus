@@ -31,6 +31,24 @@ const ChatMessages = ({chatId,session,initialMessages}) => {
             messages?.map((message,index)=>(
                 <React.Fragment key={index}>
                     <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
+                    <MessageCard message={message} language={language} key={index} direction={message?.user?.id == session?.user?.id?'right':'left'} />
                 </React.Fragment>
             ))
         }
