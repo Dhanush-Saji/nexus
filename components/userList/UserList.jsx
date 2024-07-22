@@ -53,6 +53,21 @@ const UserList = ({initialChats=[]}) => {
             </div>:members?.length>0? members?.map((item,index)=>(
               <React.Fragment key={index}>
                 <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
               </React.Fragment>
           )):
           <div className='w-full flex m-auto justify-center opacity-50'>
