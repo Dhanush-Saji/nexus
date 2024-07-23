@@ -17,11 +17,11 @@ const LanguageSelect = () => {
     return (
         isChatPage &&
         <div className='ml-4'>
-            <Select onValueChange={(value) => setLanguage(value)}>
+            <Select onValueChange={(value) => setLanguage(value)} className='z-[99999]'>
                 <SelectTrigger className="w-[150px] bg-gradient-to-b from-[#1c1c46] to-[#0D0D25]">
                     <SelectValue placeholder={LanguageSupportedMap[language]} />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className='z-[99999]'>
                     {getLanguage().map((language, index) => (
                         <SelectItem className="cursor-pointer" key={index} value={language}>{LanguageSupportedMap[language]}</SelectItem>
                     ))}

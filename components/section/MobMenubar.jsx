@@ -21,11 +21,11 @@ const MobMenubar = () => {
         <div className='flex items-center md:hidden ml-4'>
             {
                 status == 'authenticated' ?
-            <Sheet>
+            <Sheet className='z-[99999]'>
                 <SheetTrigger>
                     <IconMenu2 className='m-auto' />
                 </SheetTrigger>
-                <SheetContent className='flex'>
+                <SheetContent className='flex z-[99999]'>
                     <div className='flex flex-col flex-1 gap-4'>
                     <div className='flex gap-2 items-center'>
                     <Image src={data?.user?.image} width={40} height={40} alt='user' className='rounded-full'  />
