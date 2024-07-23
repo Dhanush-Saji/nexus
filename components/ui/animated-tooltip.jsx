@@ -42,7 +42,7 @@ export const AnimatedTooltip = ({
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence mode="popLayout">
-            { (
+            { hoveredIndex === item.userId && (
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.6 }}
                 animate={{
