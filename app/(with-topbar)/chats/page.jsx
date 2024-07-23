@@ -18,8 +18,8 @@ const Page = async() => {
       timestamp:null
     }))
   return (
-    <main className="flex items-center w-full flex-col relative h-[85vh] md:h-[91vh] px-3 py-[2vh] overflow-hidden">
-      <div className="grid grid-col-1 md:grid-cols-[30%,70%] w-full bg-[#1a2337] rounded-[10px] border border-gray-50/10 h-[84vh] md:h-[84vh]">
+    <main className="flex items-center w-full flex-col relative h-[83vh] md:h-[91vh] px-3 py-[2vh] overflow-hidden">
+      <div className="grid grid-col-1 md:grid-cols-[30%,70%] w-full bg-[#1a2337] rounded-[10px] border border-gray-50/10 h-[84vh] md:h-[82vh]">
         <div className="left-part  border-r border-gray-50/10 flex flex-col">
           <div className="flex gap-2 px-5 items-center border-b border-gray-50/10 h-[8vh]">
             <h3 className=' font-[700] text-[1.2rem] md:text-[1.5rem]'>Chats</h3>
