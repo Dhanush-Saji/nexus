@@ -11,12 +11,12 @@ const UserTopbarCard = () => {
         <div className='hidden md:flex items-center'>
             {
                 status == 'authenticated' ? <>
-                    <DropdownMenu dir='ltr'>
-                        <DropdownMenuTrigger className="ml-4">
+                    <DropdownMenu dir='ltr' className='z-[99999] relative'>
+                        <DropdownMenuTrigger className="ml-4 focus:outline-none">
                             <Image src={data?.user?.image} width={40} height={40} alt='user' className='rounded-full'  />
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent className='bg-[#182137] mr-4 min-w-[200px] rounded-[5px] text-[#e2e8ff]'>
-                            <DropdownMenuLabel>{data?.user?.name}</DropdownMenuLabel>
+                        <DropdownMenuContent className='bg-[#182137] mr-4 min-w-[200px] rounded-[5px] text-[#e2e8ff] z-[99999] relative'>
+                            <DropdownMenuLabel>Hi {data?.user?.name}!</DropdownMenuLabel>
                             <DropdownMenuSeparator className='bg-neutral-500' />
                             <DropdownMenuItem onClick={()=>signOut()} className='cursor-pointer hover:bg-[#1c263e]'>Sign Out</DropdownMenuItem>
                         </DropdownMenuContent>
