@@ -13,7 +13,7 @@ import MobMenubar from '../section/MobMenubar'
 
 const Topbar1 = () => {
     return (
-        <header className='items-center justify-between flex w-full h-[9vh] bg-[rgba(255,255,255,0.03)] backdrop-blur-[8px] z-[99999] topbar'>
+        <header className='items-center justify-between flex w-full h-[9vh] backdrop-blur-[8px] relative z-[0] topbar'>
             <Link href={'/'} style={{marginLeft:'1rem'}}>
                 <div className='flex gap-2 md:gap-4 items-center'>
                     <Image placeholder='empty' priority={true} alt='logo' src={'/logo.png'} width={40} height={40} className=' object-contain !w-[30px] !h-[30px] md:!h-[38px] md:!w-[38px]' style={{ width: 'auto', height: 'auto' }} />
