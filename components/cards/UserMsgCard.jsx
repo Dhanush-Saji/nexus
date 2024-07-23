@@ -9,8 +9,10 @@ import UserAvatar from './UserAvatar'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { toISTConverter } from '@/services/formatter'
+import { useLanguageStore } from '@/store/store'
 
 const UserMsgCard = ({ chatId }) => {
+    const language = useLanguageStore((state)=>state.language)
     const searchParams = useSearchParams()
     const search = searchParams.get('chatId')
     const { data: session } = useSession();
@@ -32,8 +34,8 @@ const UserMsgCard = ({ chatId }) => {
                     <p className="font-bold text-[0.9rem]">
                         {message ? [message?.user.name || session?.user.name].toString().split(" ")[0] : "New Chat"}
                     </p>
-                    <p className="text-gray-400 line-clamp-1 text-[0.8rem]">
-                        {message?.translated?.["en"] || "Get your conversation started"}
+                    <p className="text-gray-400 text-[0.8rem] whitespace-nowrap overflow-hidden text-ellipsis max-w-[10vw]">
+                        {(message?.translated?message?.translated?.[language]:'') || "Get your conversation started"}
                     </p>
                 </div>
                 <div className="text-xs text-gray-400 text-right">
@@ -61,8 +63,8 @@ const UserMsgCard = ({ chatId }) => {
                     <p className="font-bold text-[0.9rem]">
                         {message ? [message?.user.name || session?.user.name].toString().split(" ")[0] : "New Chat"}
                     </p>
-                    <p className="text-gray-400 line-clamp-1 text-[0.8rem]">
-                        {message?.translated?.["en"] || "Get your conversation started"}
+                    <p className="text-gray-400 text-[0.8rem] whitespace-nowrap overflow-hidden text-ellipsis max-w-[40vw]">
+                    {(message?.translated?message?.translated?.[language]:'') || "Get your conversation started"}
                     </p>
                 </div>
                 <div className="text-xs text-gray-400 text-right">
