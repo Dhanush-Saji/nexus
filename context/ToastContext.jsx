@@ -9,7 +9,7 @@ const ToastContext = ({children}) => {
 position="top-center"
 autoClose={2000}
 hideProgressBar={false}
-newestOnTop={false}
+newestOnTop={true}
 closeOnClick={false}
 rtl={false}
 pauseOnFocusLoss={false}

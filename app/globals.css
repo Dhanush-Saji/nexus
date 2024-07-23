@@ -35,6 +35,7 @@
   --primary-color:#05051e;
   --black-color1:#0001037c;
   --custom-white:#e2e8ff;
+  --toastify-z-index: 999999 !important;
 }
 *{
   -webkit-font-smoothing:antialiased;
