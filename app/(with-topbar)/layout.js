@@ -1,10 +1,11 @@
-import Topbar from "@/components/topbar/Topbar";
+import Topbar1 from "@/components/topbar/Topbar1";
+
 
 export default function RootLayout({ children }) {
   return (
-    <>
-      {/* <Topbar /> */}
+    <div className="flex flex-col">
+      <Topbar1 />
       {children}
-    </>
+    </div>
   );
 }

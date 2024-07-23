@@ -24,7 +24,9 @@ export default async function RootLayout({ children }) {
         <body className={`${inter.className} ${onest.className}`} suppressHydrationWarning={true}>
           <FirebaseAuthProvider>
             <ToastContext>
-              <ParticleBg>{children}</ParticleBg>
+              {/* <ParticleBg> */}
+                {children}
+                {/* </ParticleBg> */}
             </ToastContext>
           </FirebaseAuthProvider>
         </body>

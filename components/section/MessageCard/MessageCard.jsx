@@ -21,7 +21,7 @@ const MessageCard = ({direction='left',message,language}) => {
             :
             <div className='flex gap-2 items-start mt-4  max-w-[50%] ml-auto'>
                 <div className='flex flex-col'>
-                <div className='bg-[#25314c] rounded-[18px] rounded-tr-none p-2 px-4 flex gap-2 items-center'>
+                <div className='bg-[#5A65CA] rounded-[15px] rounded-tr-none p-2 px-4 flex gap-2 items-center'>
                     <span className='text-[0.9rem]'>
                     {!message?.translated?<Loader />:message?.translated?.[language]}
                     </span>

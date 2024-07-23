@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 const Page = async({params:{chatId}}) => {
   const session = await getServerSession(authOptions)
   return (
-    <main className="flex items-center w-full flex-col relative h-[100vh] p-[2vh]">
+    <main className="flex items-center w-full flex-col relative h-[100vh]">
       <div className=" w-full bg-[#111827] rounded-[10px] border border-gray-50/10 h-[97vh] md:h-[85vh]">
       <MobChatSection chatId={chatId} session={session} />
       </div>
