@@ -15,9 +15,7 @@ import { Tooltip, TooltipContent, TooltipProvider,TooltipTrigger } from '@/compo
 import ChatSettings from '../ChatSettings/ChatSettings'
 
 const ChatRightSection = () => {
-  const router = useRouter()
   const [initialMessages, setinitialMessages] = useState(null)
-  const [hasAccess, sethasAccess] = useState(false)
   const session = useSession()
   const searchParams = useSearchParams()
   const search = searchParams.get('chatId')
@@ -31,22 +29,6 @@ const ChatRightSection = () => {
       console.error(error);
     }
   };
-  const checkAccess = async () => {
-    try {
-      const accessCal = (await getDocs(chatMembersRef(search))).docs.map((doc) => doc.id).includes(session?.data?.user?.id)
-      sethasAccess(accessCal);
-      if (!accessCal) {
-        router.push('/chats')
-        return
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  useEffect(() => {
-    if (session.status == 'authenticated')
-      checkAccess()
-  }, [session])
   useEffect(() => {
     checkInitialMsg()
   }, [])

@@ -19,7 +19,7 @@ const UserList = ({members=[]}) => {
             <IconLoader className="mr-2 h-6 w-6 animate-spin" />
             </div>:members?.length>0? members?.map((item,index)=>(
               <React.Fragment key={index}>
-                <UserMsgCard key={item?.chatId} chatId={item?.chatId} />
+                <UserMsgCard key={index} chatId={item?.chatId} />
               </React.Fragment>
           )):
           <div className='w-full flex m-auto justify-center opacity-50'>

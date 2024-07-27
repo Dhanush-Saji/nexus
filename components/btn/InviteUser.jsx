@@ -56,7 +56,7 @@ const InviteUser = ({chatId}) => {
                     <span className='text-indigo-600 font-bold'>(Note: they must be registered)</span>
                     </DialogDescription>
                 </DialogHeader>
-                <Input className='text-black/80' placeholder='Enter email..'  type='text' onChange={(e) => setinputVal(e.target.value)} />
+                <Input className='text-black/80' placeholder='Enter email..'  type='email' onChange={(e) => setinputVal(e.target.value)} />
                 <Button className='ml-auto sm:w-fit w-full' onClick={onSubmit}>Add to chat</Button>
             </DialogContent>
         </Dialog>
