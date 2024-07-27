@@ -5,8 +5,12 @@ import { IconMessageCircleFilled } from '@tabler/icons-react'
 import React, { createRef, useEffect } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import MessageCard from '../MessageCard/MessageCard'
+import { useRouter } from 'next/navigation'
+import { getDocs } from 'firebase/firestore'
+import { chatMembersRef } from '@/converters/ChatMember'
 
 const ChatMessages = ({chatId,session,initialMessages}) => {
+    const router = useRouter()
     const language = useLanguageStore((state)=>state.language)
     const messageEndRef = createRef()
     const [messages,loading,error] = useCollectionData(
@@ -15,6 +19,20 @@ const ChatMessages = ({chatId,session,initialMessages}) => {
     useEffect(()=>{
         messageEndRef.current?.scrollIntoView({behavior: 'smooth'})
     },[messages,messageEndRef])
+    const checkAccess = async () => {
+        try {
+            const hasAccess = (await getDocs(chatMembersRef(chatId))).docs.map((doc) => doc.id).includes(session?.user?.id)
+          if (!hasAccess) {
+            router.push('/chats')
+            return
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      useEffect(()=>{
+        checkAccess()
+      },[session])
   return (
     <>
     {!loading && messages?.length == 0 && (
