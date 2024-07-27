@@ -6,6 +6,7 @@ import { chatMemberCollectionGroupRef } from "@/converters/ChatMember";
 import { getDocs } from "firebase/firestore";
 import { getServerSession } from "next-auth";
 import './chats.css'
+import ChatLeftSection from "@/components/section/ChatLeftSection/ChatLeftSection";
 
 
 const Page = async() => {
@@ -20,13 +21,7 @@ const Page = async() => {
   return (
     <main className="flex items-center w-full flex-col relative h-[83vh] md:h-[91vh] px-3 py-[2vh]">
       <div className="grid grid-col-1 md:grid-cols-[30%,70%] w-full bg-[#1a2337] rounded-[10px] border border-gray-50/10 h-[79vh] md:h-[87vh]">
-        <div className="left-part  border-r border-gray-50/10 flex flex-col">
-          <div className="flex gap-2 px-5 items-center border-b border-gray-50/10 h-[8vh]">
-            <h3 className=' font-[700] text-[1.2rem] md:text-[1.5rem]'>Chats</h3>
-            <Badge1 num={initialChats?.length} />
-          </div>
-          <UserList initialChats={initialChats} />
-        </div>
+        <ChatLeftSection initialChats={initialChats} />
         <ChatRightSection />
       </div>
     </main>
