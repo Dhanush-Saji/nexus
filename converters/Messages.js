@@ -5,6 +5,7 @@ const messageConverter  = {
     toFirestore: function(message){
         return {
             input:message.input,
+            user_language: message.user_language || '',
             timestamp: message.timestamp,
             user:message.user,
         }
@@ -14,6 +15,7 @@ const messageConverter  = {
         return {
             id:snapshot.id,
             input:data.input,
+            user_language: data.user_language || '',
             timestamp: data.timestamp?.toDate(),
             user:data.user,
             translated:data.translated

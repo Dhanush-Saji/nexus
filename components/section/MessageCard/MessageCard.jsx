@@ -1,5 +1,6 @@
 import Loader from '@/components/miscellaneous/Loader'
 import { toISTConverter } from '@/services/formatter';
+import { useLanguageStore } from '@/store/store';
 import Image from 'next/image'
 import React from 'react'
 
@@ -12,7 +13,11 @@ const MessageCard = ({ direction = 'left', message, language }) => {
                     <div className='flex flex-col'>
                         <div className='bg-[#25314c] rounded-[18px] rounded-tl-none p-2 px-4 flex gap-2 items-center flex-wrap max-w-[65vw]'>
                             <p className='text-[0.9rem] break-words whitespace-normal' style={{ wordBreak: 'break-all' }}>
-                                {!message?.translated ? <Loader /> : message?.translated?.[language]}
+                                {
+                                    message?.user_language == language?
+                                    <>{message?.input}</>:
+                                    !message?.translated ? <Loader /> : message?.translated?.[language]
+                                }
                             </p>
                         </div>
                         <p className=' opacity-40 text-[0.8rem] text-right mt-1'>{toISTConverter(message.timestamp)}</p>
@@ -23,7 +28,11 @@ const MessageCard = ({ direction = 'left', message, language }) => {
                         <div className='flex flex-col'>
                             <div className='bg-[#5A65CA] rounded-[15px] rounded-tr-none p-2 px-4 flex gap-2 items-center flex-wrap max-w-[65vw]'>
                                 <p className='text-[0.9rem] break-words whitespace-normal' style={{ wordBreak: 'break-all' }}>
-                                    {!message?.translated ? <Loader /> : message?.translated?.[language]}
+                                {
+                                    message?.user_language == language?
+                                    <>{message?.input}</>:
+                                    !message?.translated ? <Loader /> : message?.translated?.[language]
+                                }
                                 </p>
                             </div>
                             <p className='opacity-40 text-[0.8rem] text-left mt-1'>{toISTConverter(message.timestamp)}</p>
