@@ -5,10 +5,8 @@ import { addDoc, serverTimestamp } from 'firebase/firestore'
 import { useSession } from 'next-auth/react'
 import React, { useState } from 'react'
 import ShimmerButton from '../magicui/shimmer-button'
-import { useLanguageStore } from '@/store/store'
 
 const ChatInput = ({chatId}) => {
-  const language = useLanguageStore((state) => state.language)
   const session = useSession()
   const [inputText, setinputText] = useState('')
   const handleSubmit = async (e) => {
@@ -25,7 +23,6 @@ const ChatInput = ({chatId}) => {
     }
     await addDoc(messageRef(chatId),{
         input:inputText,
-        user_language:language,
         timestamp: serverTimestamp(),
         user:userToStore,
     })
