@@ -66,6 +66,14 @@
 - **Cross-Language Interaction**: Facilitates smooth communication between users speaking different languages.
 - **Secure Authentication**: Utilizes Firebase Authentication for secure user sign-in.
 
+## 🧩 Diagram 
+<table>
+  <tr>
+    <td><img src="https://github.com/Dhanush-Saji/nexus/blob/main/github_files/nexus.jpg"  alt="home" /></td>
+    <td><img  src="https://github.com/Dhanush-Saji/nexus/blob/main/github_files/nexus1.jpg"  alt="products" /></td>
+  </tr>
+ </table>
+ 
 ## 🖥️ Screenshots 
 <table>
   <tr>
