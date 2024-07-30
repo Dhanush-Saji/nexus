@@ -5,8 +5,10 @@ import { addDoc, serverTimestamp } from 'firebase/firestore'
 import { useSession } from 'next-auth/react'
 import React, { useState } from 'react'
 import ShimmerButton from '../magicui/shimmer-button'
+import { LanguageSupportedMap, useLanguageStore } from '@/store/store'
 
 const ChatInput = ({chatId}) => {
+  const language = useLanguageStore((state) => state.language)
   const session = useSession()
   const [inputText, setinputText] = useState('')
   const handleSubmit = async (e) => {
@@ -32,9 +34,9 @@ const ChatInput = ({chatId}) => {
     }
   };
   return (
-    <div className="message-send area bg-[#1a2337] px-2 flex my-auto h-[9vh] rounded-b-[10px] rounded-bl-none flex-col justify-center">
+    <div className="message-send area bg-[#1a2337] px-2 flex my-auto h-[9vh] rounded-b-[10px] rounded-bl-none flex-col justify-center gap-1">
             <form onSubmit={handleSubmit} className="flex gap-2 w-full items-center">
-          <input value={inputText} onChange={(e)=>{setinputText(e.target.value)}} type='text' placeholder='Enter message ..'
+          <input value={inputText} onChange={(e)=>{setinputText(e.target.value)}} type='text' placeholder={`Enter message in ${LanguageSupportedMap[language]}`}
           className={
             `flex text-white h-10 w-full border-none px-3 text-sm  file:border-0 file:bg-transparent bg-white/10
           file:text-sm file:font-medium placeholder-text-neutral-600 
