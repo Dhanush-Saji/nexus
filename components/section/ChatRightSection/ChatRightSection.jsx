@@ -43,7 +43,7 @@ const ChatRightSection = () => {
               </div>
               <ChatSettings chatId={search} />
             </div>
-            <div className="chatting-portion bg-gradient-to-b from-[#1a2337] to-[#080a0c] h-[71vh] overflow-y-auto px-4 flex flex-col">
+            <div className="chatting-portion bg-gradient-to-b from-[#1a2337] to-[#080a0c] h-[69vh] overflow-y-auto px-4 flex flex-col">
               <ChatMessages chatId={search} session={session?.data} initialMessages={initialMessages} />
             </div>
             <ChatInput chatId={search} />

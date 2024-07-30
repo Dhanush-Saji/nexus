@@ -22,7 +22,7 @@ const MobChatSection = async ({ chatId, session }) => {
         </div>
         <ChatSettings chatId={chatId} />
       </div>
-      <div className="chatting-portion bg-gradient-to-b from-[#131a29] to-[#0b1019] h-[63vh] overflow-y-auto px-3 flex flex-col">
+      <div className="chatting-portion bg-gradient-to-b from-[#131a29] to-[#0b1019] h-[61vh] overflow-y-auto px-3 flex flex-col">
         <ChatMessages chatId={chatId} session={session} initialMessages={initialMessagesRes} />
       </div>
       <ChatInput chatId={chatId} />

@@ -36,18 +36,18 @@ const MobMenubar = () => {
                                         <span className='text-[0.8rem]'>{data?.user?.email}</span>
                                     </div>
                                 </div>
-                                <SheetClose asChild>
+                                <SheetClose>
                                 <CreateChatBtn1 />
                                 </SheetClose>
                                 
-                                <SheetClose asChild>
+                                <SheetClose>
                                 <Link href={'/chats'}>
                                     <Button className='w-full'>Go to chats</Button>
                                 </Link>
                                 </SheetClose>
                                 
-                                <SheetClose asChild>
-                                <Button onClick={() => signOut()} variant="destructive" className='mt-auto'>Sign Out</Button>
+                                <SheetClose className='mt-auto w-full'>
+                                <Button onClick={() => signOut()} variant="destructive" className=' w-full'>Sign Out</Button>
                                 </SheetClose>
                                
                             </div>
