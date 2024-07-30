@@ -49,7 +49,7 @@ const ChatInput = ({chatId}) => {
           </ShimmerButton>
         </div>
             </form>
-            <p className='text-[0.8rem] opacity-70'>* Type message in selected language</p>
+            <p className='text-[0.7rem] md:text-[0.8rem] opacity-70'>* Type message in selected language</p>
           </div>
   )
 }
