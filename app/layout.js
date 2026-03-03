@@ -14,7 +14,7 @@ const onest = Onest({ subsets: ["latin"] });
 export const metadata = {
   title: 'Nexus',
   description: 'Nexus is the new way of chats',
-}
+} 
 
 export default async function RootLayout({ children }) {
   const session = getServerSession(authOptions);
